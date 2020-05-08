@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Customer;
+namespace PineappleCard\Domain\Customer;
 
 interface CustomerRepository
 {

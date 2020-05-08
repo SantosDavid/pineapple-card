@@ -2,8 +2,8 @@
 
 namespace Tests\Domain\Customer\ValueObject;
 
-use App\Domain\Customer\Exception\PayDayIsNotValidException;
-use App\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Customer\Exception\PayDayIsNotValidException;
+use PineappleCard\Domain\Customer\ValueObject\PayDay;
 use PHPUnit\Framework\TestCase;
 
 class PayDayTest extends TestCase

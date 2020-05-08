@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Customer;
+namespace PineappleCard\Domain\Customer;
 
-use App\Domain\Customer\ValueObject\CustomerId;
-use App\Domain\Customer\ValueObject\PayDay;
-use App\Domain\Shared\ValueObject\Money;
+use PineappleCard\Domain\Customer\ValueObject\CustomerId;
+use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Money;
 
 class Customer
 {

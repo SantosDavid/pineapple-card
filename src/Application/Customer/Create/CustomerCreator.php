@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Application\Customer\Create;
+namespace PineappleCard\Application\Customer\Create;
 
-use App\Domain\Customer\Customer;
-use App\Domain\Customer\CustomerRepository;
-use App\Domain\Customer\ValueObject\CustomerId;
-use App\Domain\Customer\ValueObject\PayDay;
-use App\Domain\Shared\ValueObject\Money;
+use PineappleCard\Domain\Customer\Customer;
+use PineappleCard\Domain\Customer\CustomerRepository;
+use PineappleCard\Domain\Customer\ValueObject\CustomerId;
+use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Money;
 
 class CustomerCreator
 {

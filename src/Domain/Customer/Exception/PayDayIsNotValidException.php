@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Domain\Customer\Exception;
+namespace PineappleCard\Domain\Customer\Exception;
 
 use Exception;
-use Throwable;
 
 class PayDayIsNotValidException extends Exception
 {

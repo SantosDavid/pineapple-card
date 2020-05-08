@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Application\Customer\Create;
+namespace PineappleCard\Application\Customer\Create;
 
-use App\Domain\Customer\ValueObject\PayDay;
-use App\Domain\Shared\ValueObject\Money;
+use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Money;
 
 class CreateCustomerHandler
 {

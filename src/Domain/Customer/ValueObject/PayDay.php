@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Customer\ValueObject;
+namespace PineappleCard\Domain\Customer\ValueObject;
 
-use App\Domain\Customer\Exception\PayDayIsNotValidException;
+use PineappleCard\Domain\Customer\Exception\PayDayIsNotValidException;
 
 class PayDay
 {

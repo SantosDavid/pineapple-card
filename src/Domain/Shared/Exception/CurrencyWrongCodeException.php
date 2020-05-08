@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Shared\Exception;
+namespace PineappleCard\Domain\Shared\Exception;
 
 use Exception;
 

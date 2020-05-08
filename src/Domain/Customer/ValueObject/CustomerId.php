@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Customer\ValueObject;
+namespace PineappleCard\Domain\Customer\ValueObject;
 
 use Ramsey\Uuid\Uuid;
 

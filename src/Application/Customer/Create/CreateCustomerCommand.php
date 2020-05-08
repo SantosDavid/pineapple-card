@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Customer\Create;
+namespace PineappleCard\Application\Customer\Create;
 
 class CreateCustomerCommand
 {
@@ -13,9 +13,11 @@ class CreateCustomerCommand
         return $this->payDay;
     }
 
-    public function setPayDay(int $payDay): void
+    public function setPayDay(int $payDay): CreateCustomerCommand
     {
         $this->payDay = $payDay;
+
+        return $this;
     }
 
     public function getLimit(): float
@@ -23,8 +25,10 @@ class CreateCustomerCommand
         return $this->limit;
     }
 
-    public function setLimit(float $limit): void
+    public function setLimit(float $limit): CreateCustomerCommand
     {
         $this->limit = $limit;
+
+        return $this;
     }
 }

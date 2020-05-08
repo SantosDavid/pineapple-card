@@ -2,10 +2,10 @@
 
 namespace Tests\Application\Customer\Create;
 
-use App\Application\Customer\Create\CustomerCreator;
-use App\Domain\Customer\ValueObject\PayDay;
-use App\Domain\Shared\ValueObject\Money;
-use App\Infrastructure\Persistence\InMemory\CustomerInMemoryRepository;
+use PineappleCard\Application\Customer\Create\CustomerCreator;
+use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Money;
+use PineappleCard\Infrastructure\Persistence\InMemory\CustomerInMemoryRepository;
 use PHPUnit\Framework\TestCase;
 
 class CustomerCreatorTest extends TestCase

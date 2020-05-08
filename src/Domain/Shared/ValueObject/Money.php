@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Shared\ValueObject;
+namespace PineappleCard\Domain\Shared\ValueObject;
 
 class Money
 {

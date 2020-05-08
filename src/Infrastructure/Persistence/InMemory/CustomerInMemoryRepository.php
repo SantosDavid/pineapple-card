@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Infrastructure\Persistence\InMemory;
+namespace PineappleCard\Infrastructure\Persistence\InMemory;
 
-use App\Domain\Customer\Customer;
-use App\Domain\Customer\CustomerRepository;
+use PineappleCard\Domain\Customer\Customer;
+use PineappleCard\Domain\Customer\CustomerRepository;
 use Tightenco\Collect\Support\Collection;
 
 class CustomerInMemoryRepository implements CustomerRepository

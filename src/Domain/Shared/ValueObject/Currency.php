@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Shared\ValueObject;
+namespace PineappleCard\Domain\Shared\ValueObject;
 
-use App\Domain\Shared\Exception\CurrencyWrongCodeException;
+use PineappleCard\Domain\Shared\Exception\CurrencyWrongCodeException;
 
 class Currency
 {
