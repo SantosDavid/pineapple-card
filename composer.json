@@ -1,0 +1,29 @@
+{
+    "name": "david/pineapple-card",
+    "description": "Show PineappleCARD customer information about invoices, payments and more",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SantosDavid",
+            "email": "daviddsantosd@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "ramsey/uuid": "^4.0",
+        "tightenco/collect": "^7.5"
+    },
+    "require-dev": {
+        "phpunir/phpunit": "9.1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
