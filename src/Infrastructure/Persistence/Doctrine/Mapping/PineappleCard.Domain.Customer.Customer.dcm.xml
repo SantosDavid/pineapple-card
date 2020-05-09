@@ -1,0 +1,9 @@
+<doctrine-mapping>
+    <entity name="Pineapple\Domain\Customer\Customer" table="customers">
+        <id name="id" type="string">
+        </id>
+
+        <field name="created_at" type="datetime" nullable="false">
+        </field>
+    </entity>
+</doctrine-mapping>

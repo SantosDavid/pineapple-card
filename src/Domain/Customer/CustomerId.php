@@ -22,4 +22,9 @@ class CustomerId
     {
         return $this->id === $customerId->id;
     }
+
+    public function __toString()
+    {
+        return $this->id;
+    }
 }

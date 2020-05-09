@@ -1,0 +1,5 @@
+<doctrine-mapping>
+    <embeddable name="PineappleCARD\Domain\Customer\CustomerId">
+        <field name="amount" type="decimal" />
+    </embeddable>
+</doctrine-mapping>
