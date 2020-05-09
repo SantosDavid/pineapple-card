@@ -1,0 +1,17 @@
+<doctrine-migrations xmlns="http://doctrine-project.org/schemas/migrations/configuration"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://doctrine-project.org/schemas/migrations/configuration
+                    http://doctrine-project.org/schemas/migrations/configuration.xsd">
+
+    <name>Pineapple migrations</name>
+
+    <migrations-namespace>PineappleCard\Infrastructure\Persistence\Doctrine\Migration</migrations-namespace>
+
+    <table name="doctrine_migration_versions" column="version" column_length="14" executed_at_column="executed_at"/>
+
+    <migrations-directory>/src/Infrastructure/Persistence/Doctrine/Migration</migrations-directory>
+
+    <all-or-nothing>true</all-or-nothing>
+
+    <check-database-platform>true</check-database-platform>
+</doctrine-migrations>

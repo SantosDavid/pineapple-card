@@ -16,7 +16,9 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "doctrine/orm": "2.7.2",
+        "doctrine/migrations": "^2.0"
     },
     "require-dev": {
         "phpunir/phpunit": "9.1.4",

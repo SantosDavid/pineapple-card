@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <embeddable name="PineappleCARD\Domain\Shared\ValueObject\Money">
+    <embeddable name="PineappleCard\Domain\Shared\ValueObject\Money">
         <field name="amount" type="decimal" />
         <field name="currency" type="string" />
     </embeddable>

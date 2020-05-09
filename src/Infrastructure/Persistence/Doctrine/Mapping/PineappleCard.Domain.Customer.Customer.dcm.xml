@@ -1,9 +1,14 @@
 <doctrine-mapping>
-    <entity name="Pineapple\Domain\Customer\Customer" table="customers">
+    <entity name="PineappleCard\Domain\Customer\Customer" schema="pineapple_card" table="customers"
+            repository-class="PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCustomerRepository">
+
         <id name="id" type="string">
         </id>
 
-        <field name="created_at" type="datetime" nullable="false">
+        <field name="createdAt" column="created_at" type="datetime" nullable="false">
         </field>
+
+        <embedded name="payDay" column-prefix="pay_" class="PineappleCard\Domain\Customer\ValueObject\PayDay"/>
+        <embedded name="limit" class="PineappleCard\Domain\Shared\ValueObject\Money"/>
     </entity>
 </doctrine-mapping>

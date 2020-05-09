@@ -4,7 +4,7 @@ namespace PineappleCard\Application\Customer\Create;
 
 use PineappleCard\Domain\Customer\Customer;
 use PineappleCard\Domain\Customer\CustomerRepository;
-use PineappleCard\Domain\Customer\ValueObject\CustomerId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
 use PineappleCard\Domain\Shared\ValueObject\Money;
 

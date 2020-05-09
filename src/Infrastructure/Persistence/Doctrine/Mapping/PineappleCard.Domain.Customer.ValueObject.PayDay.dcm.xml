@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <embeddable name="PineappleCARD\Domain\Customer\CustomerId">
-        <field name="amount" type="decimal" />
+    <embeddable name="PineappleCard\Domain\Customer\ValueObject\PayDay">
+        <field name="day" column="day" type="integer" nullable="false"/>
     </embeddable>
 </doctrine-mapping>
