@@ -6,11 +6,11 @@ class Money
 {
     private float $amount;
 
-    private Currency $currency;
+    private string $currency;
 
-    public function __construct(float $amount)
+    public function __construct(float $amount, string $currency = 'BRL')
     {
         $this->amount = $amount;
-        $this->currency = new Currency();
+        $this->currency = $currency;
     }
 }
