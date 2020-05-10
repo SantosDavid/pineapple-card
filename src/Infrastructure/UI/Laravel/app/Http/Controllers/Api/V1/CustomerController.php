@@ -5,36 +5,31 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use PineappleCard\Application\Customer\Create\CreateCustomerCommand;
-use PineappleCard\Application\Customer\Create\CreateCustomerHandler;
-use PineappleCard\Application\Customer\Create\CustomerCreator;
-use PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCustomerRepository;
+use PineappleCard\Application\Customer\Create\CreateCustomerRequest;
+use PineappleCard\Application\Customer\Create\CreateCustomerService;
+use PineappleCard\Domain\Shared\Exception\BaseException;
 
 class CustomerController extends Controller
 {
-    /**
-     * @var DoctrineCustomerRepository
-     */
-    private DoctrineCustomerRepository $repository;
+    private CreateCustomerService $service;
 
-    public function __construct(DoctrineCustomerRepository $repository)
+    public function __construct(CreateCustomerService $service)
     {
-        $this->repository = $repository;
+        $this->service = $service;
     }
 
     public function store(Request $request)
     {
-        $creator = new CustomerCreator($this->repository);
+        try {
+            $request = (new CreateCustomerRequest())
+                ->setPayDay($request->get('pay_day'))
+                ->setLimit($request->get('limit'));
 
-        $handler = new CreateCustomerHandler($creator);
+            $response = $this->service->execute($request);
 
-        $request = (new CreateCustomerCommand())
-            ->setPayDay($request->get('pay_day'))
-            ->setLimit($request->get('limit'));
-
-
-        $handler->__invoke($request);
-
-        return new JsonResponse('asdas');
+            return new JsonResponse($response);
+        } catch (BaseException $e) {
+            return new JsonResponse($e->getMessage());
+        }
     }
 }

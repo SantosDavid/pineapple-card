@@ -2,7 +2,7 @@
 
 namespace PineappleCard\Application\Customer\Create;
 
-class CreateCustomerCommand
+class CreateCustomerRequest
 {
     private int $payDay;
 
@@ -13,7 +13,7 @@ class CreateCustomerCommand
         return $this->payDay;
     }
 
-    public function setPayDay(int $payDay): CreateCustomerCommand
+    public function setPayDay(int $payDay): CreateCustomerRequest
     {
         $this->payDay = $payDay;
 
@@ -25,7 +25,7 @@ class CreateCustomerCommand
         return $this->limit;
     }
 
-    public function setLimit(float $limit): CreateCustomerCommand
+    public function setLimit(float $limit): CreateCustomerRequest
     {
         $this->limit = $limit;
 

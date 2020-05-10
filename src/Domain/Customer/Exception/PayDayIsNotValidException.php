@@ -2,9 +2,9 @@
 
 namespace PineappleCard\Domain\Customer\Exception;
 
-use Exception;
+use PineappleCard\Domain\Shared\Exception\BaseException;
 
-class PayDayIsNotValidException extends Exception
+class PayDayIsNotValidException extends BaseException
 {
     public function __construct(int $payDay, array $acceptedDays)
     {

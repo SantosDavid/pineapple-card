@@ -2,9 +2,7 @@
 
 namespace PineappleCard\Domain\Shared\Exception;
 
-use Exception;
-
-class CurrencyWrongCodeException extends Exception
+class CurrencyWrongCodeException extends BaseException
 {
     public function __construct(string $code)
     {

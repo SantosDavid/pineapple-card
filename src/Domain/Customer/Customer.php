@@ -23,4 +23,9 @@ class Customer
         $this->limit = $limit;
         $this->createdAt = new DateTime();
     }
+
+    public function id(): CustomerId
+    {
+        return $this->id;
+    }
 }

@@ -174,6 +174,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\DoctrineServiceProvider::class,
+        App\Providers\BindInterfaceServiceProvider::class,
     ],
 
     /*

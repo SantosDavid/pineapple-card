@@ -8,7 +8,7 @@ use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
 use PineappleCard\Domain\Shared\ValueObject\Money;
 
-class CustomerCreator
+class CreateCustomerService
 {
     private CustomerRepository $repository;
 
@@ -17,8 +17,11 @@ class CustomerCreator
         $this->repository = $repository;
     }
 
-    public function execute(PayDay $payDay, Money $limit)
+    public function execute(CreateCustomerRequest $request): CreateCustomerResponse
     {
+        $payDay = new PayDay($request->getPayDay());
+        $limit = new Money($request->getLimit());
+
         $customer = new Customer(
             new CustomerId(),
             $payDay,
@@ -26,5 +29,7 @@ class CustomerCreator
         );
 
         $this->repository->create($customer);
+
+        return new CreateCustomerResponse($customer->id());
     }
 }
