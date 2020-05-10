@@ -3,6 +3,7 @@
 namespace PineappleCard\Infrastructure\Persistence\InMemory;
 
 use PineappleCard\Domain\Customer\Customer;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\CustomerRepository;
 use Tightenco\Collect\Support\Collection;
 
@@ -25,5 +26,10 @@ class CustomerInMemoryRepository implements CustomerRepository
     public function totalItens(): int
     {
         return $this->itens->count();
+    }
+
+    public function byId(CustomerId $customerId): ?Customer
+    {
+        return $this->itens->first(fn (Customer $customer) => $customer->id()->equals($customerId));
     }
 }

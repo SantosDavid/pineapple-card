@@ -4,6 +4,7 @@ namespace PineappleCard\Domain\Customer;
 
 use DateTime;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Auth;
 use PineappleCard\Domain\Shared\ValueObject\Money;
 
 class Customer
@@ -16,12 +17,15 @@ class Customer
 
     private DateTime $createdAt;
 
-    public function __construct(CustomerId $id, PayDay $payDay, Money $limit)
+    private Auth $auth;
+
+    public function __construct(CustomerId $id, PayDay $payDay, Money $limit, Auth $auth)
     {
         $this->id = $id;
         $this->payDay = $payDay;
         $this->limit = $limit;
         $this->createdAt = new DateTime();
+        $this->auth = $auth;
     }
 
     public function id(): CustomerId

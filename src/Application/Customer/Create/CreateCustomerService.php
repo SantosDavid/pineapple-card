@@ -6,6 +6,7 @@ use PineappleCard\Domain\Customer\Customer;
 use PineappleCard\Domain\Customer\CustomerRepository;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Shared\ValueObject\Auth;
 use PineappleCard\Domain\Shared\ValueObject\Money;
 
 class CreateCustomerService
@@ -21,11 +22,13 @@ class CreateCustomerService
     {
         $payDay = new PayDay($request->getPayDay());
         $limit = new Money($request->getLimit());
+        $auth = new Auth($request->getEmail(), $request->getEncodedPassword());
 
         $customer = new Customer(
             new CustomerId(),
             $payDay,
-            $limit
+            $limit,
+            $auth
         );
 
         $this->repository->create($customer);

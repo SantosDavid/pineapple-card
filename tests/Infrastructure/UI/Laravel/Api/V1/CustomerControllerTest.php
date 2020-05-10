@@ -9,7 +9,7 @@ class CustomerControllerTest extends TestCase
 {
     public function testShouldCreateCustomer()
     {
-        $data = ['limit' => 500, 'pay_day' => 10];
+        $data = ['limit' => 500, 'pay_day' => 10, 'email' => 'test@test.com.br', 'password' => '123456'];
 
 
         $response = $this->postJson('api/sign-in', $data);
@@ -22,7 +22,7 @@ class CustomerControllerTest extends TestCase
 
     public function testShouldReturnStatusCode400WhenRequestHasDayNotValid()
     {
-        $data = ['limit' => 500, 'pay_day' => 11];
+        $data = ['limit' => 500, 'pay_day' => 11, 'email' => 'test@test', 'password' => '123456'];
 
 
         $response = $this->postJson('api/sign-in', $data);

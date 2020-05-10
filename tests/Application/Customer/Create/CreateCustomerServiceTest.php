@@ -23,7 +23,9 @@ class CreateCustomerServiceTest extends TestCase
     {
         $request = (new CreateCustomerRequest())
             ->setPayDay(5)
-            ->setLimit(100);
+            ->setLimit(100)
+            ->setEmail('test@test.com')
+            ->setEncodedPassword('123456');
 
 
         $this->service->execute($request);

@@ -5,6 +5,7 @@ namespace PineappleCard\Infrastructure\Persistence\Doctrine\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use PineappleCard\Domain\Customer\Customer;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\CustomerRepository;
 
 class DoctrineCustomerRepository extends EntityRepository implements CustomerRepository
@@ -23,5 +24,10 @@ class DoctrineCustomerRepository extends EntityRepository implements CustomerRep
         $em->flush();
 
         return $customer;
+    }
+
+    public function byId(CustomerId $customerId): ?Customer
+    {
+        return $this->find($customerId->id());
     }
 }

@@ -10,5 +10,6 @@
 
         <embedded name="payDay" column-prefix="pay_" class="PineappleCard\Domain\Customer\ValueObject\PayDay"/>
         <embedded name="limit" class="PineappleCard\Domain\Shared\ValueObject\Money"/>
+        <embedded name="auth" class="PineappleCard\Domain\Shared\ValueObject\Auth"/>
     </entity>
 </doctrine-mapping>
