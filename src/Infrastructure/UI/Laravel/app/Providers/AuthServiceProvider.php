@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
+use PineappleCard\Infrastructure\UI\Laravel\Auth\Customer\CustomCustomerProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        auth()->provider('custom_customer',  function () {
+            return app(CustomCustomerProvider::class);
+        });
     }
 }
