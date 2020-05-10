@@ -19,4 +19,14 @@ class Auth
         $this->email = $email;
         $this->password = $encodedPassword;
     }
+
+    public function email(): string
+    {
+        return $this->email;
+    }
+
+    public function password(): string
+    {
+        return $this->password;
+    }
 }

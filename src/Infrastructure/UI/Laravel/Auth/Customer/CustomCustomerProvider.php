@@ -1,9 +1,12 @@
 <?php
 
-namespace PineappleCard\Infrastructure\UI\Laravel\Auth;
+namespace PineappleCard\Infrastructure\UI\Laravel\Auth\Customer;
 
+use RuntimeException;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
+use Illuminate\Support\Facades\Hash;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\CustomerRepository;
 
 class CustomCustomerProvider implements UserProvider
@@ -20,17 +23,21 @@ class CustomCustomerProvider implements UserProvider
 
     public function retrieveById($identifier)
     {
-        return $this->repository->find($identifier);
+        if (is_null($customer = $this->repository->byId(new CustomerId($identifier)))) {
+            return null;
+        }
+
+        return new CustomerAuth($customer);
     }
 
     public function retrieveByToken($identifier, $token)
     {
-        // TODO: Implement retrieveByToken() method.
+        throw new RuntimeException();
     }
 
     public function updateRememberToken(Authenticatable $user, $token)
     {
-        // TODO: Implement updateRememberToken() method.
+        throw new RuntimeException();
     }
 
     public function retrieveByCredentials(array $credentials)
@@ -39,13 +46,23 @@ class CustomCustomerProvider implements UserProvider
             return null;
         }
 
-        $a = $this->repository->findAll();
+        if (is_null($customer = $this->repository->byEmail($credentials['email']))) {
+            return null;
+        }
 
-        return $a[0];
+        return new CustomerAuth($customer);
     }
 
     public function validateCredentials(Authenticatable $user, array $credentials)
     {
-        // TODO: Implement validateCredentials() method.
+        if ($user->getEmail() !== $credentials['email']) {
+            return false;
+        }
+
+        if (!Hash::check($credentials['password'], $user->getAuthPassword())) {
+            return false;
+        }
+
+        return true;
     }
 }

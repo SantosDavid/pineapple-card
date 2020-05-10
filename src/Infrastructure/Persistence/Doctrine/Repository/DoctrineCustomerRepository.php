@@ -30,4 +30,9 @@ class DoctrineCustomerRepository extends EntityRepository implements CustomerRep
     {
         return $this->find($customerId->id());
     }
+
+    public function byEmail(string $email): ?Customer
+    {
+        return $this->findOneBy(['auth.email' => $email]);
+    }
 }

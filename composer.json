@@ -19,7 +19,9 @@
         "laravel/tinker": "^2.0",
         "doctrine/orm": "2.7.2",
         "doctrine/migrations": "^2.0",
-        "dingo/api": "^3.0.0"
+        "dingo/api": "^3.0.0",
+        "tymon/jwt-auth": "^1.0",
+        "phpseclib/phpseclib": "~2.0"
     },
     "require-dev": {
         "phpunir/phpunit": "9.1.4",

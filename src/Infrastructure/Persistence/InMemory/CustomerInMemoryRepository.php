@@ -32,4 +32,9 @@ class CustomerInMemoryRepository implements CustomerRepository
     {
         return $this->itens->first(fn (Customer $customer) => $customer->id()->equals($customerId));
     }
+
+    public function byEmail(string $email): ?Customer
+    {
+        return $this->itens->first(fn (Customer $customer) => $customer->auth()->email() === $email);
+    }
 }
