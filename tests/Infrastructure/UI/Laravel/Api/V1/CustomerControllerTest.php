@@ -12,7 +12,7 @@ class CustomerControllerTest extends TestCase
         $data = ['limit' => 500, 'pay_day' => 10, 'email' => 'test@test.com.br', 'password' => '123456'];
 
 
-        $response = $this->postJson('api/sign-in', $data);
+        $response = $this->postJson('api/sign-up', $data);
 
 
         $response->assertCreated();
@@ -25,7 +25,7 @@ class CustomerControllerTest extends TestCase
         $data = ['limit' => 500, 'pay_day' => 11, 'email' => 'test@test', 'password' => '123456'];
 
 
-        $response = $this->postJson('api/sign-in', $data);
+        $response = $this->postJson('api/sign-up', $data);
 
 
         $response->assertStatus(400);
