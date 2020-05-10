@@ -1,36 +1,32 @@
-<?php return array(
-  'providers' =>
-  array(
+<?php return array (
+  'providers' => 
+  array (
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
-    1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-    2 => 'Illuminate\\Bus\\BusServiceProvider',
-    3 => 'Illuminate\\Cache\\CacheServiceProvider',
-    4 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
-    5 => 'Illuminate\\Cookie\\CookieServiceProvider',
-    6 => 'Illuminate\\Database\\DatabaseServiceProvider',
-    7 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
-    8 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
-    9 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
-    10 => 'Illuminate\\Hashing\\HashServiceProvider',
-    11 => 'Illuminate\\Mail\\MailServiceProvider',
-    12 => 'Illuminate\\Notifications\\NotificationServiceProvider',
-    13 => 'Illuminate\\Pagination\\PaginationServiceProvider',
-    14 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
-    15 => 'Illuminate\\Queue\\QueueServiceProvider',
-    16 => 'Illuminate\\Redis\\RedisServiceProvider',
-    17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-    18 => 'Illuminate\\Session\\SessionServiceProvider',
-    19 => 'Illuminate\\Translation\\TranslationServiceProvider',
-    20 => 'Illuminate\\Validation\\ValidationServiceProvider',
-    21 => 'Illuminate\\View\\ViewServiceProvider',
-    22 => 'App\\Providers\\AuthServiceProvider',
-    23 => 'App\\Providers\\EventServiceProvider',
-    24 => 'App\\Providers\\RouteServiceProvider',
-    25 => 'App\\Providers\\DoctrineServiceProvider',
-    26 => 'App\\Providers\\BindInterfaceServiceProvider',
+    1 => 'Illuminate\\Cache\\CacheServiceProvider',
+    2 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
+    3 => 'Illuminate\\Cookie\\CookieServiceProvider',
+    4 => 'Illuminate\\Database\\DatabaseServiceProvider',
+    5 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
+    6 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
+    7 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
+    8 => 'Illuminate\\Hashing\\HashServiceProvider',
+    9 => 'Illuminate\\Mail\\MailServiceProvider',
+    10 => 'Illuminate\\Notifications\\NotificationServiceProvider',
+    11 => 'Illuminate\\Pagination\\PaginationServiceProvider',
+    12 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
+    13 => 'Illuminate\\Queue\\QueueServiceProvider',
+    14 => 'Illuminate\\Redis\\RedisServiceProvider',
+    15 => 'Illuminate\\Session\\SessionServiceProvider',
+    16 => 'Illuminate\\Translation\\TranslationServiceProvider',
+    17 => 'Illuminate\\Validation\\ValidationServiceProvider',
+    18 => 'App\\Providers\\AuthServiceProvider',
+    19 => 'App\\Providers\\EventServiceProvider',
+    20 => 'App\\Providers\\RouteServiceProvider',
+    21 => 'App\\Providers\\DoctrineServiceProvider',
+    22 => 'App\\Providers\\BindInterfaceServiceProvider',
   ),
-  'eager' =>
-  array(
+  'eager' => 
+  array (
     0 => 'Illuminate\\Auth\\AuthServiceProvider',
     1 => 'Illuminate\\Cookie\\CookieServiceProvider',
     2 => 'Illuminate\\Database\\DatabaseServiceProvider',
@@ -40,21 +36,14 @@
     6 => 'Illuminate\\Notifications\\NotificationServiceProvider',
     7 => 'Illuminate\\Pagination\\PaginationServiceProvider',
     8 => 'Illuminate\\Session\\SessionServiceProvider',
-    9 => 'Illuminate\\View\\ViewServiceProvider',
-    10 => 'App\\Providers\\AuthServiceProvider',
-    11 => 'App\\Providers\\EventServiceProvider',
-    12 => 'App\\Providers\\RouteServiceProvider',
-    13 => 'App\\Providers\\DoctrineServiceProvider',
-    14 => 'App\\Providers\\BindInterfaceServiceProvider',
+    9 => 'App\\Providers\\AuthServiceProvider',
+    10 => 'App\\Providers\\EventServiceProvider',
+    11 => 'App\\Providers\\RouteServiceProvider',
+    12 => 'App\\Providers\\DoctrineServiceProvider',
+    13 => 'App\\Providers\\BindInterfaceServiceProvider',
   ),
-  'deferred' =>
-  array(
-    'Illuminate\\Broadcasting\\BroadcastManager' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-    'Illuminate\\Contracts\\Broadcasting\\Factory' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-    'Illuminate\\Contracts\\Broadcasting\\Broadcaster' => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-    'Illuminate\\Bus\\Dispatcher' => 'Illuminate\\Bus\\BusServiceProvider',
-    'Illuminate\\Contracts\\Bus\\Dispatcher' => 'Illuminate\\Bus\\BusServiceProvider',
-    'Illuminate\\Contracts\\Bus\\QueueingDispatcher' => 'Illuminate\\Bus\\BusServiceProvider',
+  'deferred' => 
+  array (
     'cache' => 'Illuminate\\Cache\\CacheServiceProvider',
     'cache.store' => 'Illuminate\\Cache\\CacheServiceProvider',
     'cache.psr6' => 'Illuminate\\Cache\\CacheServiceProvider',
@@ -148,50 +137,39 @@
     'queue.connection' => 'Illuminate\\Queue\\QueueServiceProvider',
     'redis' => 'Illuminate\\Redis\\RedisServiceProvider',
     'redis.connection' => 'Illuminate\\Redis\\RedisServiceProvider',
-    'auth.password' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-    'auth.password.broker' => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
     'translator' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
   ),
-  'when' =>
-  array(
-    'Illuminate\\Broadcasting\\BroadcastServiceProvider' =>
-    array(
+  'when' => 
+  array (
+    'Illuminate\\Cache\\CacheServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Bus\\BusServiceProvider' =>
-    array(
+    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Cache\\CacheServiceProvider' =>
-    array(
+    'Illuminate\\Hashing\\HashServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' =>
-    array(
+    'Illuminate\\Mail\\MailServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Hashing\\HashServiceProvider' =>
-    array(
+    'Illuminate\\Pipeline\\PipelineServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Mail\\MailServiceProvider' =>
-    array(
+    'Illuminate\\Queue\\QueueServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Pipeline\\PipelineServiceProvider' =>
-    array(
+    'Illuminate\\Redis\\RedisServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Queue\\QueueServiceProvider' =>
-    array(
+    'Illuminate\\Translation\\TranslationServiceProvider' => 
+    array (
     ),
-    'Illuminate\\Redis\\RedisServiceProvider' =>
-    array(
-    ),
-    'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider' =>
-    array(
-    ),
-    'Illuminate\\Translation\\TranslationServiceProvider' =>
-    array(
-    ),
-    'Illuminate\\Validation\\ValidationServiceProvider' =>
-    array(
+    'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
     ),
   ),
 );
