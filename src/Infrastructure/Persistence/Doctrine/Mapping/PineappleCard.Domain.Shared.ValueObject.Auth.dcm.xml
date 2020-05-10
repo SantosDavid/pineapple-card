@@ -1,0 +1,6 @@
+<doctrine-mapping>
+    <embeddable name="PineappleCard\Domain\Shared\ValueObject\Auth">
+        <field name="email" type="string" />
+        <field name="password" type="string" />
+    </embeddable>
+</doctrine-mapping>
