@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\EntityManager;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CustomerTypeId;
 
 class DoctrineServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,8 @@ class DoctrineServiceProvider extends ServiceProvider
             EntityManagerInterface::class,
             fn () => EntityManager::create($this->connection(), $this->config())
         );
+
+        $this->types();
     }
 
     private function connection()
@@ -27,7 +31,14 @@ class DoctrineServiceProvider extends ServiceProvider
     {
         return Setup::createXMLMetadataConfiguration(
             [(__DIR__."/../../../../Persistence/Doctrine/Mapping")],
-            config('app.env') === 'local'
+            ('app.env') === 'local'
         );
+    }
+
+    private function types()
+    {
+        if (!Type::hasType(CustomerTypeId::MYTYPE)) {
+            Type::addType(CustomerTypeId::MYTYPE, CustomerTypeId::class);
+        }
     }
 }

@@ -1,8 +1,8 @@
 <doctrine-mapping>
-    <entity name="PineappleCard\Domain\Customer\Customer" schema="pineapple_card" table="customers"
+    <entity name="PineappleCard\Domain\Customer\Customer" table="customers"
             repository-class="PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCustomerRepository">
 
-        <id name="id" type="string">
+        <id name="id" type="customer_id">
         </id>
 
         <field name="createdAt" column="created_at" type="datetime" nullable="false">

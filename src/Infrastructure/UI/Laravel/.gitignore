@@ -11,4 +11,4 @@ npm-debug.log
 yarn-error.log
 storage/framework
 .env
-
+storage/logs

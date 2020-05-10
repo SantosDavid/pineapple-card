@@ -3,6 +3,7 @@ version: '3.5'
 services:
   app:
     container_name: pineapple_app
+    restart: unless-stopped
     build:
       context: .docker/PHP
     volumes:
@@ -12,6 +13,7 @@ services:
 
   server:
     container_name: pineapple_server
+    restart: unless-stopped
     volumes:
       - ./:/app
     build:
@@ -23,6 +25,7 @@ services:
 
   db:
     container_name: pineapple_db
+    restart: unless-stopped
     image: mysql:8.0
     volumes:
       - db_data:/var/lib/mysql
