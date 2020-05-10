@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cp .env.example .env
+cp src/Infrastructure/UI/Laravel/.env.example src/Infrastructure/UI/Laravel/.env
 docker-compose up -d --build
 docker exec -it pineapple_app composer install
 docker exec -it pineapple_app php artisan key:generate

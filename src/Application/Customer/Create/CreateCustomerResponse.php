@@ -2,10 +2,9 @@
 
 namespace PineappleCard\Application\Customer\Create;
 
-use JsonSerializable;
 use PineappleCard\Domain\Customer\CustomerId;
 
-class CreateCustomerResponse implements JsonSerializable
+class CreateCustomerResponse
 {
     private CustomerId $customerId;
 
@@ -14,10 +13,8 @@ class CreateCustomerResponse implements JsonSerializable
         $this->customerId = $customerId;
     }
 
-    public function jsonSerialize()
+    public function __toString()
     {
-        return [
-            'id' => $this->customerId->id()
-        ];
+        return json_encode(['id' => $this->customerId->id()]);
     }
 }

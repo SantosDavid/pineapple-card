@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use PineappleCard\Application\Customer\Create\CreateCustomerRequest;
 use PineappleCard\Application\Customer\Create\CreateCustomerService;
@@ -27,9 +26,9 @@ class CustomerController extends Controller
 
             $response = $this->service->execute($request);
 
-            return new JsonResponse($response);
+            return $this->response->created(null, $response);
         } catch (BaseException $e) {
-            return new JsonResponse($e->getMessage());
+            $this->response->errorBadRequest($e->getMessage());
         }
     }
 }

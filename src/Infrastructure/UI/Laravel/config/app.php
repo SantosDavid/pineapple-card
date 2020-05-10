@@ -161,7 +161,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Dingo\Api\Provider\LaravelServiceProvider::class,
         /*
          * Application Service Providers...
          */
