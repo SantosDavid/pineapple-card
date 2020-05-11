@@ -2,29 +2,12 @@
 
 namespace PineappleCard\Domain\Customer;
 
-use Ramsey\Uuid\Uuid;
+use PineappleCard\Domain\Shared\Uuid;
 
-class CustomerId
+class CustomerId extends Uuid
 {
-    private string $id;
-
-    public function __construct(string $id = null)
-    {
-        $this->id = $id ?? Uuid::uuid4()->toString();
-    }
-
-    public function id(): string
-    {
-        return $this->id;
-    }
-
     public function equals(CustomerId $customerId): bool
     {
         return $this->id === $customerId->id();
-    }
-
-    public function __toString()
-    {
-        return $this->id;
     }
 }
