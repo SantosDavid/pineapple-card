@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\EntityManager;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CardTypeId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CustomerTypeId;
 
 class DoctrineServiceProvider extends ServiceProvider
@@ -39,6 +40,10 @@ class DoctrineServiceProvider extends ServiceProvider
     {
         if (!Type::hasType(CustomerTypeId::MYTYPE)) {
             Type::addType(CustomerTypeId::MYTYPE, CustomerTypeId::class);
+        }
+
+        if (!Type::hasType(CardTypeId::MYTYPE)) {
+            Type::addType(CardTypeId::MYTYPE, CardTypeId::class);
         }
     }
 }

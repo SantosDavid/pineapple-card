@@ -1,0 +1,18 @@
+<doctrine-mapping>
+    <entity name="PineappleCard\Domain\Card\Card" table="cards"
+            repository-class="PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCardRepository">
+
+        <id name="cardId" column="id" type="card_id">
+        </id>
+
+        <field name="customerId" column="customer_id" type="customer_id" nullable="false">
+        </field>
+
+        <field name="number" type="string" nullable="false">
+        </field>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false">
+        </field>
+
+    </entity>
+</doctrine-mapping>

@@ -7,21 +7,20 @@ namespace PineappleCard\Infrastructure\Persistence\Doctrine\Migration;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20200510205825 extends AbstractMigration
+final class Version20200511132017 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return 'Adding Auth to customer model';
+        return 'Create cards table';
     }
 
     public function up(Schema $schema) : void
     {
-        $this->addSql('ALTER TABLE customers ADD auth_email varchar (255)');
-        $this->addSql('ALTER TABLE customers ADD auth_password varchar(255)');
+        $this->addSql('CREATE TABLE cards (id varchar(255) PRIMARY KEY, customer_id varchar(255), number varchar(255), created_at datetime)');
     }
 
     public function down(Schema $schema) : void
     {
-        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('DROP TABLE cards');
     }
 }
