@@ -23,6 +23,15 @@ trait CreatesApplication
             'path' => env('SQLITE_PATH'),
         ]);
 
+        $this->refreshDatabase();
+
         return $app;
+    }
+
+    public function refreshDatabase()
+    {
+        unlink(env('SQLITE_PATH'));
+
+        exec('./vendor/bin/doctrine-migrations migrations:migrate --db-configuration=tests/Infrastructure/Persistence/Doctrine/MigrationTestConfig.php --no-interaction');
     }
 }
