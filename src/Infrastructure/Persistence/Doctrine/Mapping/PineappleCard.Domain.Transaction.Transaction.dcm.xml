@@ -1,0 +1,18 @@
+<doctrine-mapping>
+    <entity name="PineappleCard\Domain\Transaction\Transaction" table="transactions"
+            repository-class="PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineTransactionRepository">
+
+        <id name="transactionId" column="id" type="transaction_id">
+        </id>
+
+        <field name="cardId" column="card_id" type="card_id" nullable="false">
+        </field>
+
+        <embedded name="value" class="PineappleCard\Domain\Shared\ValueObject\Money"/>
+        <embedded name="establishment" class="PineappleCard\Domain\Transaction\ValueObject\Establishment"/>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false">
+        </field>
+
+    </entity>
+</doctrine-mapping>

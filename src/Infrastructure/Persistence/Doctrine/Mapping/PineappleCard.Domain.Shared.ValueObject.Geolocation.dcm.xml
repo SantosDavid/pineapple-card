@@ -1,0 +1,6 @@
+<doctrine-mapping>
+    <embeddable name="PineappleCard\Domain\Shared\ValueObject\Geolocation">
+        <field name="latitude" type="string" nullable="false"/>
+        <field name="longitude" type="string" nullable="false"/>
+    </embeddable>
+</doctrine-mapping>
