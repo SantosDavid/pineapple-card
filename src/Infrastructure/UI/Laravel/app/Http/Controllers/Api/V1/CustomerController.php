@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Customer\CustomerRequest;
 use Illuminate\Support\Facades\Hash;
 use PineappleCard\Application\Customer\Create\CreateCustomerRequest;
 use PineappleCard\Application\Customer\Create\CreateCustomerService;
@@ -18,16 +18,16 @@ class CustomerController extends Controller
         $this->service = $service;
     }
 
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
         try {
-            $request = (new CreateCustomerRequest())
+            $applicationRequest = (new CreateCustomerRequest())
                 ->setPayDay($request->get('pay_day'))
                 ->setLimit($request->get('limit'))
                 ->setEmail($request->get('email'))
                 ->setEncodedPassword(Hash::make($request->get('password')));
 
-            $response = $this->service->execute($request);
+            $response = $this->service->execute($applicationRequest);
 
             return $this->response->created(null, $response);
         } catch (BaseException $e) {
