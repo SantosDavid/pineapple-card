@@ -2,7 +2,7 @@
 
 namespace Tests\Application\Invoice\FindOrCreate;
 
-use PineappleCard\Domain\Card\CardId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
 use PineappleCard\Domain\Invoice\ValueObject\Period;
@@ -20,7 +20,7 @@ class FakeInvoiceRepository implements InvoiceRepository
         return $invoice;
     }
 
-    public function byPeriod(CardId $cardId, Period $period): ?Invoice
+    public function byPeriod(CustomerId $customerId, Period $period): ?Invoice
     {
         return self::$byPeriod;
     }

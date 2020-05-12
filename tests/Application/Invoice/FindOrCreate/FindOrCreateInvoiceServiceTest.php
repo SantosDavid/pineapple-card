@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceRequest;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceService;
 use PineappleCard\Domain\Card\CardId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Invoice\ValueObject\Period;
@@ -30,7 +31,7 @@ class FindOrCreateInvoiceServiceTest extends TestCase
     {
         FakeInvoiceRepository::$byPeriod = new Invoice(
             new InvoiceId(),
-            new CardId(),
+            new CustomerId(),
             new Period(1, 2000),
             new Status()
         );

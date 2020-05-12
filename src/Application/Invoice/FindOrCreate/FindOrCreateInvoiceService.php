@@ -2,7 +2,7 @@
 
 namespace PineappleCard\Application\Invoice\FindOrCreate;
 
-use PineappleCard\Domain\Card\CardId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
@@ -21,13 +21,13 @@ class FindOrCreateInvoiceService
     public function execute(FindOrCreateInvoiceRequest $request)
     {
         $invoice = $this->repository->byPeriod(
-            $cardId = new CardId($request->getCardId()),
+            $customerId = new CustomerId($request->getCardId()),
             $period = new Period($request->getMonth(), $request->getYear())
         );
 
         if (is_null($invoice)) {
             $invoice = $this->repository->create(
-                new Invoice(new InvoiceId(), $cardId, $period, new Status())
+                new Invoice(new InvoiceId(), $customerId, $period, new Status())
             );
         }
 

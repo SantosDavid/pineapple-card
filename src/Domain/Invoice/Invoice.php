@@ -2,7 +2,7 @@
 
 namespace PineappleCard\Domain\Invoice;
 
-use PineappleCard\Domain\Card\CardId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\ValueObject\Period;
 use PineappleCard\Domain\Invoice\ValueObject\Status;
 
@@ -10,18 +10,18 @@ class Invoice
 {
     private InvoiceId $invoiceId;
 
-    private CardId $cardId;
+    private CustomerId $customerId;
 
     private Period $period;
 
     private Status $status;
 
-    public function __construct(InvoiceId $invoiceId, CardId $cardId, Period $period, Status $status)
+    public function __construct(InvoiceId $invoiceId, CustomerId $customerId, Period $period, Status $status)
     {
         $this->invoiceId = $invoiceId;
+        $this->customerId = $customerId;
         $this->period = $period;
         $this->status = $status;
-        $this->cardId = $cardId;
     }
 
     public function id(): InvoiceId

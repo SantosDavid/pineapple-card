@@ -2,7 +2,7 @@
 
 namespace PineappleCard\Infrastructure\Persistence\InMemory;
 
-use PineappleCard\Domain\Card\CardId;
+use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
 use PineappleCard\Domain\Invoice\ValueObject\Period;
@@ -24,7 +24,7 @@ class InvoiceInMemoryRepository implements InvoiceRepository
         return $invoice;
     }
 
-    public function byPeriod(CardId $cardId, Period $period): ?Invoice
+    public function byPeriod(CustomerId $customerId, Period $period): ?Invoice
     {
         // TODO: Implement byPeriod() method.
     }
