@@ -3,12 +3,10 @@
 namespace PineappleCard\Infrastructure\Persistence\Doctrine\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping;
 use PineappleCard\Domain\Transaction\Transaction;
 use PineappleCard\Domain\Transaction\TransactionRepository;
 
-class DoctrineTransactionRepository extends EntityRepository implements TransactionRepository
+class DoctrineTransactionRepository extends DoctrineRepository implements TransactionRepository
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -17,11 +15,7 @@ class DoctrineTransactionRepository extends EntityRepository implements Transact
 
     public function save(Transaction $transaction): Transaction
     {
-        $em = $this->getEntityManager();
-
-        $em->persist($transaction);
-
-        $em->flush();
+        $this->store($transaction);
 
         return $transaction;
     }

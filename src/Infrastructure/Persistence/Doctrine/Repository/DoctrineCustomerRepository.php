@@ -3,12 +3,11 @@
 namespace PineappleCard\Infrastructure\Persistence\Doctrine\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use PineappleCard\Domain\Customer\Customer;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\CustomerRepository;
 
-class DoctrineCustomerRepository extends EntityRepository implements CustomerRepository
+class DoctrineCustomerRepository extends DoctrineRepository implements CustomerRepository
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -17,11 +16,7 @@ class DoctrineCustomerRepository extends EntityRepository implements CustomerRep
 
     public function create(Customer $customer): Customer
     {
-        $em = $this->getEntityManager();
-
-        $em->persist($customer);
-
-        $em->flush();
+        $this->store($customer);
 
         return $customer;
     }

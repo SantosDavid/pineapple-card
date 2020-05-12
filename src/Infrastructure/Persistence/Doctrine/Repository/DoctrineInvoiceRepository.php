@@ -3,13 +3,12 @@
 namespace PineappleCard\Infrastructure\Persistence\Doctrine\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
 use Tightenco\Collect\Support\Collection;
 
-class DoctrineInvoiceRepository extends EntityRepository implements InvoiceRepository
+class DoctrineInvoiceRepository extends DoctrineRepository implements InvoiceRepository
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -18,11 +17,7 @@ class DoctrineInvoiceRepository extends EntityRepository implements InvoiceRepos
 
     public function create(Invoice $invoice): Invoice
     {
-        $em = $this->getEntityManager();
-
-        $em->persist($invoice);
-
-        $em->flush();
+        $this->store($invoice);
 
         return $invoice;
     }
