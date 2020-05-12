@@ -37,4 +37,9 @@ class Customer
     {
         return $this->auth;
     }
+
+    public function payDay(): PayDay
+    {
+        return $this->payDay;
+    }
 }

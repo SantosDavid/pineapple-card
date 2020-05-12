@@ -8,6 +8,8 @@ $api->group(['namespace' => 'App\Http\Controllers\Api\V1', 'version' => 'v1'], f
     $api->post('login', 'AuthController@login');
 
     $api->group(['middleware' => 'api.auth'], function ($api) {
-        $api->post('customers/{customer_id}/cards', 'CardController@store');
+        $api->post('me/cards', 'CardController@store');
+
+        $api->post('me/transactions', 'TransactionController@store');
     });
 });

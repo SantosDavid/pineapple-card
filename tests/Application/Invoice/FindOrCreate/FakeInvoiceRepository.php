@@ -5,13 +5,13 @@ namespace Tests\Application\Invoice\FindOrCreate;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
-use PineappleCard\Domain\Invoice\ValueObject\Period;
+use Tightenco\Collect\Support\Collection;
 
 class FakeInvoiceRepository implements InvoiceRepository
 {
     public static bool $createdCalled =false;
 
-    public static ?Invoice $byPeriod = null;
+    public static ?Collection $byCustomer = null;
 
     public function create(Invoice $invoice): Invoice
     {
@@ -20,8 +20,8 @@ class FakeInvoiceRepository implements InvoiceRepository
         return $invoice;
     }
 
-    public function byPeriod(CustomerId $customerId, Period $period): ?Invoice
+    public function byCustomer(CustomerId $customerId): Collection
     {
-        return self::$byPeriod;
+        return self::$byCustomer ?? new Collection();
     }
 }

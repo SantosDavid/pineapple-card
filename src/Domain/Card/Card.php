@@ -28,4 +28,9 @@ class Card
     {
         return $this->cardId;
     }
+
+    public function customerId(): CustomerId
+    {
+        return $this->customerId;
+    }
 }

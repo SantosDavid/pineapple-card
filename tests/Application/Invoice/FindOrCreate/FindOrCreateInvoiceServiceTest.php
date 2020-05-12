@@ -5,14 +5,18 @@ namespace Tests\Application\Invoice\FindOrCreate;
 use PHPUnit\Framework\TestCase;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceRequest;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceService;
-use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceId;
-use PineappleCard\Domain\Invoice\ValueObject\Period;
-use PineappleCard\Domain\Invoice\ValueObject\Status;
+use PineappleCard\Infrastructure\Persistence\InMemory\CustomerInMemoryRepository;
+use Tests\Application\Shared\CreateCustomerHelper;
+use Tightenco\Collect\Support\Collection;
 
 class FindOrCreateInvoiceServiceTest extends TestCase
 {
+    use CreateCustomerHelper;
+
+    private CustomerInMemoryRepository $customerRepository;
+
     private FakeInvoiceRepository $invoiceRepository;
 
     private FindOrCreateInvoiceService $service;
@@ -20,25 +24,21 @@ class FindOrCreateInvoiceServiceTest extends TestCase
     public function setUp(): void
     {
         $this->invoiceRepository = new FakeInvoiceRepository();
+        $this->customerRepository = new CustomerInMemoryRepository();
 
         $this->service = new FindOrCreateInvoiceService(
+            $this->customerRepository,
             $this->invoiceRepository
         );
     }
 
     public function testShouldNotCreateWhenFindByPeriod()
     {
-        FakeInvoiceRepository::$byPeriod = new Invoice(
-            new InvoiceId(),
-            new CustomerId(),
-            new Period(1, 2000),
-            new Status()
-        );
+        $customer = $this->customerRepository->create($this->createCustomer());
+        FakeInvoiceRepository::$byCustomer = new Collection([new Invoice(new InvoiceId(), $customer->id(), $customer->payDay())]);
 
         $request = (new FindOrCreateInvoiceRequest())
-            ->setCustomerId(1)
-            ->setMonth(1)
-            ->setYear(1);
+            ->setCustomerId($customer->id()->id());
 
 
         $this->service->execute($request);
@@ -49,12 +49,11 @@ class FindOrCreateInvoiceServiceTest extends TestCase
 
     public function testShouldCreateWhenNotFindByPeriod()
     {
-        FakeInvoiceRepository::$byPeriod = null;
+        FakeInvoiceRepository::$byCustomer = null;
+        $customer = $this->customerRepository->create($this->createCustomer());
 
         $request = (new FindOrCreateInvoiceRequest())
-            ->setCustomerId(1)
-            ->setMonth(1)
-            ->setYear(1);
+            ->setCustomerId($customer->id()->id());
 
 
         $this->service->execute($request);

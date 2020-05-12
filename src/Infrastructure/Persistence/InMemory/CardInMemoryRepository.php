@@ -4,6 +4,7 @@ namespace PineappleCard\Infrastructure\Persistence\InMemory;
 
 use Illuminate\Support\Collection;
 use PineappleCard\Domain\Card\Card;
+use PineappleCard\Domain\Card\CardId;
 use PineappleCard\Domain\Card\CardRepository;
 
 class CardInMemoryRepository implements CardRepository
@@ -25,5 +26,10 @@ class CardInMemoryRepository implements CardRepository
     public function countItems(): int
     {
         return $this->itens->count();
+    }
+
+    public function byId(CardId $cardId): ?Card
+    {
+        return $this->itens->first(fn (Card $card) => $card->id()->equals($cardId));
     }
 }

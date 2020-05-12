@@ -13,9 +13,12 @@ use PineappleCard\Domain\Shared\ValueObject\Auth;
 use PineappleCard\Domain\Shared\ValueObject\Money;
 use PineappleCard\Infrastructure\Persistence\InMemory\CardInMemoryRepository;
 use PineappleCard\Infrastructure\Persistence\InMemory\CustomerInMemoryRepository;
+use Tests\Application\Shared\CreateCustomerHelper;
 
 class CreateCardServiceTest extends TestCase
 {
+    use CreateCustomerHelper;
+
     private CustomerInMemoryRepository $customerRepository;
 
     private CardInMemoryRepository $cardRepository;
@@ -46,14 +49,7 @@ class CreateCardServiceTest extends TestCase
 
     public function testShouldCreateCard()
     {
-        $customer = (new Customer(
-            new CustomerId(1),
-            new PayDay(10),
-            new Money(1),
-            new Auth('daviddsantosd@gmail.com', '123456')
-        ));
-
-        $this->customerRepository->create($customer);
+        $customer = $this->customerRepository->create($this->createCustomer());
 
         $request = (new CreateCardRequest())->setCustomerId($customer->id()->id());
 

@@ -8,7 +8,13 @@
         <field name="customerId" column="customer_id" type="customer_id" nullable="false">
         </field>
 
-        <embedded name="period" class="PineappleCard\Domain\Invoice\ValueObject\Period"/>
-        <embedded name="status" column-prefix=" " class="PineappleCard\Domain\Invoice\ValueObject\Status"/>
+        <embedded name="payDay" column-prefix="pay_" class="PineappleCard\Domain\Customer\ValueObject\PayDay"/>
+
+        <field name="createdAt"  column="created_at" type="datetime">
+        </field>
+
+        <field name="paid" type="boolean">
+        </field>
+
     </entity>
 </doctrine-mapping>
