@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
-use PineappleCard\Domain\Invoice\ValueObject\Period;
+use Tightenco\Collect\Support\Collection;
 
 class DoctrineInvoiceRepository extends EntityRepository implements InvoiceRepository
 {
@@ -27,19 +27,14 @@ class DoctrineInvoiceRepository extends EntityRepository implements InvoiceRepos
         return $invoice;
     }
 
-    public function byPeriod(CustomerId $customerId, Period $period): ?Invoice
+    public function byCustomer(CustomerId $customerId): Collection
     {
-        return collect($this->createQueryBuilder('i')
-            ->where('i.period.month = :month')
-            ->andWhere('i.period.year = :year')
-            ->andWhere('i.customerId = :customerId')
+        return new Collection($this->createQueryBuilder('i')
+            ->where('i.customerId = :customerId')
             ->setParameters([
-                'month' => $period->month(),
-                'year' => $period->year(),
                 'customerId' => $customerId
             ])
             ->getQuery()
-            ->getResult())
-            ->first();
+            ->getResult());
     }
 }

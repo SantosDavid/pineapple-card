@@ -5,7 +5,6 @@ namespace PineappleCard\Infrastructure\Persistence\InMemory;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
-use PineappleCard\Domain\Invoice\ValueObject\Period;
 use Tightenco\Collect\Support\Collection;
 
 class InvoiceInMemoryRepository implements InvoiceRepository
@@ -24,8 +23,8 @@ class InvoiceInMemoryRepository implements InvoiceRepository
         return $invoice;
     }
 
-    public function byPeriod(CustomerId $customerId, Period $period): ?Invoice
+    public function byCustomer(CustomerId $customerId): Collection
     {
-        // TODO: Implement byPeriod() method.
+        return $this->items->filter(fn (Invoice $invoice) => $invoice->customerId()->equals($customerId));
     }
 }

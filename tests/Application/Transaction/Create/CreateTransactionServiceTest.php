@@ -8,6 +8,7 @@ use PineappleCard\Application\Transaction\Create\CreateTransactionService;
 use PineappleCard\Domain\Card\Card;
 use PineappleCard\Domain\Card\CardId;
 use PineappleCard\Domain\Customer\CustomerId;
+use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Shared\Exception\CardIdNotExistsException;
 use PineappleCard\Infrastructure\Persistence\InMemory\CardInMemoryRepository;
 use PineappleCard\Infrastructure\Persistence\InMemory\TransactionInMemoryRepository;
@@ -50,7 +51,8 @@ class CreateTransactionServiceTest extends TestCase
             ->setLatitude(1)
             ->setLongitude(2)
             ->setCategory(1)
-            ->setCardId($cardId->id());
+            ->setCardId($cardId->id())
+            ->setInvoiceId(new InvoiceId());
 
         $this->cardRepository->create(new Card($cardId, new CustomerId()));
 

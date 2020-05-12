@@ -2,8 +2,10 @@
 
 namespace PineappleCard\Application\Transaction\Create;
 
+use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceService;
 use PineappleCard\Domain\Card\CardId;
 use PineappleCard\Domain\Card\CardRepository;
+use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Shared\Exception\CardIdNotExistsException;
 use PineappleCard\Domain\Shared\ValueObject\Geolocation;
 use PineappleCard\Domain\Shared\ValueObject\Money;
@@ -19,11 +21,16 @@ class CreateTransactionService
      * @var CardRepository
      */
     private CardRepository $cardRepository;
+    /**
+     * @var FindOrCreateInvoiceService
+     */
+    private FindOrCreateInvoiceService $findOrCreateInvoiceService;
 
-    public function __construct(TransactionRepository $repository, CardRepository $cardRepository)
+    public function __construct(TransactionRepository $repository, CardRepository $cardRepository, FindOrCreateInvoiceService $findOrCreateInvoiceService)
     {
         $this->repository = $repository;
         $this->cardRepository = $cardRepository;
+        $this->findOrCreateInvoiceService = $findOrCreateInvoiceService;
     }
 
     public function execute(CreateTransactionRequest $request)
@@ -34,6 +41,7 @@ class CreateTransactionService
 
         $transaction = new Transaction(
             new TransactionId(),
+            new InvoiceId(),
             $cardId,
             $this->createEstablishment($request),
             $this->createMoney($request)
