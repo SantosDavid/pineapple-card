@@ -23,4 +23,14 @@ class Period
 
         $this->month = $month;
     }
+
+    public function month(): int
+    {
+        return $this->month;
+    }
+
+    public function year(): int
+    {
+        return $this->year;
+    }
 }

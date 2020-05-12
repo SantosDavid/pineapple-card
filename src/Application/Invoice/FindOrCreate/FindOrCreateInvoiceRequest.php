@@ -4,22 +4,11 @@ namespace PineappleCard\Application\Invoice\FindOrCreate;
 
 class FindOrCreateInvoiceRequest
 {
-    private string $cardId;
-
     private int $month;
 
     private int $year;
 
-    public function getCardId(): string
-    {
-        return $this->cardId;
-    }
-
-    public function setCardId(string $cardId): FindOrCreateInvoiceRequest
-    {
-        $this->cardId = $cardId;
-        return $this;
-    }
+    private string $customerId;
 
     public function getMonth(): int
     {
@@ -40,6 +29,17 @@ class FindOrCreateInvoiceRequest
     public function setYear(int $year): FindOrCreateInvoiceRequest
     {
         $this->year = $year;
+        return $this;
+    }
+
+    public function getCustomerId(): string
+    {
+        return $this->customerId;
+    }
+
+    public function setCustomerId(string $customerId): FindOrCreateInvoiceRequest
+    {
+        $this->customerId = $customerId;
         return $this;
     }
 }

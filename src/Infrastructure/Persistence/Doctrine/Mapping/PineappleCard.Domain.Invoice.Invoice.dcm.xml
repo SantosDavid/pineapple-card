@@ -1,0 +1,14 @@
+<doctrine-mapping>
+    <entity name="PineappleCard\Domain\Invoice\Invoice" table="invoices"
+            repository-class="PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineInvoiceRepository">
+
+        <id name="invoiceId" column="id" type="invoice_id">
+        </id>
+
+        <field name="customerId" column="customer_id" type="customer_id" nullable="false">
+        </field>
+
+        <embedded name="period" class="PineappleCard\Domain\Invoice\ValueObject\Period"/>
+        <embedded name="status" column-prefix=" " class="PineappleCard\Domain\Invoice\ValueObject\Status"/>
+    </entity>
+</doctrine-mapping>

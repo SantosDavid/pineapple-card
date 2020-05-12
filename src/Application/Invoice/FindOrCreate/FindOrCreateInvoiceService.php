@@ -21,7 +21,7 @@ class FindOrCreateInvoiceService
     public function execute(FindOrCreateInvoiceRequest $request)
     {
         $invoice = $this->repository->byPeriod(
-            $customerId = new CustomerId($request->getCardId()),
+            $customerId = new CustomerId($request->getCustomerId()),
             $period = new Period($request->getMonth(), $request->getYear())
         );
 

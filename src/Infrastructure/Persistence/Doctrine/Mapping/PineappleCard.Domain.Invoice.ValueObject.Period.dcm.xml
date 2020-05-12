@@ -1,0 +1,6 @@
+<doctrine-mapping>
+    <embeddable name="PineappleCard\Domain\Invoice\ValueObject\Period">
+        <field name="month" type="integer" nullable="false"/>
+        <field name="year" type="integer" nullable="false"/>
+    </embeddable>
+</doctrine-mapping>

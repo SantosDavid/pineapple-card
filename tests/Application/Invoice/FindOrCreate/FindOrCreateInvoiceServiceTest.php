@@ -5,7 +5,6 @@ namespace Tests\Application\Invoice\FindOrCreate;
 use PHPUnit\Framework\TestCase;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceRequest;
 use PineappleCard\Application\Invoice\FindOrCreate\FindOrCreateInvoiceService;
-use PineappleCard\Domain\Card\CardId;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceId;
@@ -37,7 +36,7 @@ class FindOrCreateInvoiceServiceTest extends TestCase
         );
 
         $request = (new FindOrCreateInvoiceRequest())
-            ->setCardId(1)
+            ->setCustomerId(1)
             ->setMonth(1)
             ->setYear(1);
 
@@ -53,7 +52,7 @@ class FindOrCreateInvoiceServiceTest extends TestCase
         FakeInvoiceRepository::$byPeriod = null;
 
         $request = (new FindOrCreateInvoiceRequest())
-            ->setCardId(1)
+            ->setCustomerId(1)
             ->setMonth(1)
             ->setYear(1);
 
