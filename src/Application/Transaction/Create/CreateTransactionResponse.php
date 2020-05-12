@@ -12,4 +12,9 @@ class CreateTransactionResponse
     {
         $this->transactionId = $transactionId;
     }
+
+    public function __toString()
+    {
+        return json_encode(['id' => $this->transactionId->id()]);
+    }
 }

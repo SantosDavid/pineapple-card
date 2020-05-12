@@ -12,4 +12,9 @@ class FindOrCreateInvoiceResponse
     {
         $this->invoiceId = $invoiceId;
     }
+
+    public function id(): InvoiceId
+    {
+        return $this->invoiceId;
+    }
 }

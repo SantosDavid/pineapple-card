@@ -29,13 +29,11 @@ class Invoice
         PayDay $payDay,
         DateTime $createdAt = null,
         bool $paid = false
-    )
-    {
+    ) {
         $this->invoiceId = $invoiceId;
         $this->customerId = $customerId;
         $this->createdAt = $createdAt ?? new DateTime();
         $this->payDay = $payDay;
-        $this->dueDate = $payDay->day() - self::DAYS_CLOSED_BEFORE_DUE_DATE;
         $this->paid = $paid;
     }
 
@@ -46,6 +44,8 @@ class Invoice
 
     public function isOpened(): bool
     {
+        $this->dueDate = $this->payDay->day() - self::DAYS_CLOSED_BEFORE_DUE_DATE;
+
         $validAt = Carbon::instance($this->createdAt);
         $now = Carbon::now();
 

@@ -19,7 +19,7 @@ class CardControllerTest extends TestCase
 
     public function testShouldStoreCardInDatabase()
     {
-        $response = $this->postJson("api/customers/{$this->customer->id()->id()}/cards");
+        $response = $this->postJson("api/me/cards");
 
 
         $response->assertCreated();

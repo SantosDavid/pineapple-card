@@ -12,6 +12,7 @@ use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CardTypeId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CustomerTypeId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\InvoiceTypeId;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Types\TransactionTypeId;
 
 class DoctrineServiceProvider extends ServiceProvider
 {
@@ -50,6 +51,10 @@ class DoctrineServiceProvider extends ServiceProvider
 
         if (!Type::hasType(InvoiceTypeId::MYTYPE)) {
             Type::addType(InvoiceTypeId::MYTYPE, InvoiceTypeId::class);
+        }
+
+        if (!Type::hasType(TransactionTypeId::MYTYPE)) {
+            Type::addType(TransactionTypeId::MYTYPE, TransactionTypeId::class);
         }
     }
 }

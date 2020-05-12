@@ -16,11 +16,11 @@ class CardController extends Controller
         $this->service = $service;
     }
 
-    public function store(string $customerId)
+    public function store()
     {
         try {
             $applicationRequest = (new CreateCardRequest())
-                ->setCustomerId($customerId);
+                ->setCustomerId(auth()->user()->id());
 
             $response = $this->service->execute($applicationRequest);
 

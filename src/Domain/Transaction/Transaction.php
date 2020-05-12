@@ -28,8 +28,7 @@ class Transaction
         CardId $cardId,
         Establishment $establishment,
         Money $value
-    )
-    {
+    ) {
         $this->transactionId = $transactionId;
         $this->invoiceId = $invoiceId;
         $this->cardId = $cardId;

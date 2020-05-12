@@ -6,5 +6,4 @@ use PineappleCard\Domain\Shared\Uuid;
 
 class TransactionId extends Uuid
 {
-
 }
