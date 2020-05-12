@@ -24,4 +24,9 @@ class FakeInvoiceRepository implements InvoiceRepository
     {
         return self::$byCustomer ?? new Collection();
     }
+
+    public function save(Invoice $invoice)
+    {
+        // TODO: Implement save() method.
+    }
 }

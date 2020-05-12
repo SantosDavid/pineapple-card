@@ -27,4 +27,9 @@ class InvoiceInMemoryRepository implements InvoiceRepository
     {
         return $this->items->filter(fn (Invoice $invoice) => $invoice->customerId()->equals($customerId));
     }
+
+    public function save(Invoice $invoice)
+    {
+
+    }
 }
