@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DateTime;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Invoice\Exception\InvoiceOpenedCannotBePaidException;
 
 class Invoice
 {
@@ -81,5 +82,19 @@ class Invoice
     public function customerId(): CustomerId
     {
         return $this->customerId;
+    }
+
+    public function markAsPayed()
+    {
+        if ($this->isOpened()) {
+            throw new InvoiceOpenedCannotBePaidException($this->id());
+        }
+
+        $this->paid = true;
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->paid;
     }
 }

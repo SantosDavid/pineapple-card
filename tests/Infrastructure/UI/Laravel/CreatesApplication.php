@@ -30,7 +30,11 @@ trait CreatesApplication
 
     public function refreshDatabase()
     {
-        unlink(env('SQLITE_PATH'));
+        try {
+            unlink(env('SQLITE_PATH'));
+        } catch (\Throwable $e) {
+
+        }
 
         exec('./vendor/bin/doctrine-migrations migrations:migrate --db-configuration=tests/Infrastructure/Persistence/Doctrine/MigrationTestConfig.php --no-interaction');
     }

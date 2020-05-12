@@ -10,4 +10,6 @@ interface InvoiceRepository
     public function create(Invoice $invoice): Invoice;
 
     public function byCustomer(CustomerId $customerId): Collection;
+
+    public function save(Invoice $invoice);
 }

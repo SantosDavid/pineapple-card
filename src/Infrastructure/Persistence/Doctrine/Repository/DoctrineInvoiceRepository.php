@@ -32,4 +32,11 @@ class DoctrineInvoiceRepository extends DoctrineRepository implements InvoiceRep
             ->getQuery()
             ->getResult());
     }
+
+    public function save(Invoice $invoice)
+    {
+        $em = $this->getEntityManager();
+
+        $em->flush($invoice);
+    }
 }

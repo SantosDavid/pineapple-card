@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DateTime;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Customer\ValueObject\PayDay;
+use PineappleCard\Domain\Invoice\Exception\InvoiceOpenedCannotBePaidException;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceId;
 use Tests\Infrastructure\UI\Laravel\TestCase;
@@ -60,5 +61,16 @@ class InvoiceTest extends TestCase
 
 
         $this->assertFalse($invoice->isOpened());
+    }
+
+    public function testShouldRaiseExceptionWhenTryingToMarkAsPayedAndInvoiceIsOpened()
+    {
+        $this->expectException(InvoiceOpenedCannotBePaidException::class);
+
+        $createdAt = Carbon::create(2020, 1, 1);
+        Carbon::setTestNow(Carbon::create(2020, 1, 3));
+
+
+        (new Invoice(new InvoiceId(), new CustomerId(), new PayDay(15), $createdAt))->markAsPayed();
     }
 }

@@ -11,5 +11,7 @@ $api->group(['namespace' => 'App\Http\Controllers\Api\V1', 'version' => 'v1'], f
         $api->post('me/cards', 'CardController@store');
 
         $api->post('me/transactions', 'TransactionController@store');
+
+        $api->post('me/invoices/{invoiceId}/pay', 'InvoiceController@pay');
     });
 });
