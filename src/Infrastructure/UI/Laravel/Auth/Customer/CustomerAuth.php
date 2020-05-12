@@ -4,6 +4,7 @@ namespace PineappleCard\Infrastructure\UI\Laravel\Auth\Customer;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use PineappleCard\Domain\Customer\Customer;
+use PineappleCard\Domain\Customer\CustomerId;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class CustomerAuth implements Authenticatable, JWTSubject
@@ -16,6 +17,11 @@ class CustomerAuth implements Authenticatable, JWTSubject
     public function __construct(Customer $customer)
     {
         $this->customer = $customer;
+    }
+
+    public function id(): CustomerId
+    {
+        return $this->customer->id();
     }
 
     public function getEmail(): string

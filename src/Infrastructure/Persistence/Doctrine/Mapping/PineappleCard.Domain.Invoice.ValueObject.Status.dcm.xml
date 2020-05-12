@@ -1,0 +1,5 @@
+<doctrine-mapping>
+    <embeddable name="PineappleCard\Domain\Invoice\ValueObject\Status">
+        <field name="status" type="text" nullable="false"/>
+    </embeddable>
+</doctrine-mapping>
