@@ -42,7 +42,7 @@ class CreateTransactionService
 
         $transaction = $this->createTransaction($request, $card);
 
-        $this->repository->save($transaction);
+        $this->repository->create($transaction);
 
         return new CreateTransactionResponse($transaction->id());
     }

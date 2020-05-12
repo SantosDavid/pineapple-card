@@ -30,6 +30,5 @@ class InvoiceInMemoryRepository implements InvoiceRepository
 
     public function save(Invoice $invoice)
     {
-
     }
 }

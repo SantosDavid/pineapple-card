@@ -14,5 +14,8 @@
         <field name="createdAt" column="created_at" type="datetime" nullable="false">
         </field>
 
+
+        <field name="refunded" type="boolean">
+        </field>
     </entity>
 </doctrine-mapping>
