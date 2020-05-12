@@ -22,6 +22,8 @@ class Transaction
 
     private DateTime $createdAt;
 
+    private bool $refunded = false;
+
     public function __construct(
         TransactionId $transactionId,
         InvoiceId $invoiceId,
@@ -40,5 +42,20 @@ class Transaction
     public function id(): TransactionId
     {
         return $this->transactionId;
+    }
+
+    public function markAsRefunded()
+    {
+        $this->refunded = true;
+    }
+
+    public function cardId(): CardId
+    {
+        return $this->cardId;
+    }
+
+    public function isRefunded(): bool
+    {
+        return $this->refunded;
     }
 }
