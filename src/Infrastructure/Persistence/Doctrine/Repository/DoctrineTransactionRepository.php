@@ -34,4 +34,13 @@ class DoctrineTransactionRepository extends DoctrineRepository implements Transa
 
         $em->flush();
     }
+
+    public function byInvoicesId(Collection $invoicesId): Collection
+    {
+        return new Collection($this->createQueryBuilder('t')
+            ->where('t.invoiceId in (:invoicesId)')
+            ->setParameter('invoicesId', $invoicesId->toArray())
+            ->getQuery()
+            ->getResult());
+    }
 }

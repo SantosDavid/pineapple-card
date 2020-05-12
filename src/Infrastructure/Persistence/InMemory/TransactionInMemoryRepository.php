@@ -2,11 +2,11 @@
 
 namespace PineappleCard\Infrastructure\Persistence\InMemory;
 
-use PineappleCard\Domain\Customer\CustomerId;
+use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Transaction\Transaction;
 use PineappleCard\Domain\Transaction\TransactionId;
 use PineappleCard\Domain\Transaction\TransactionRepository;
-use Tymon\JWTAuth\Claims\Collection;
+use Tightenco\Collect\Support\Collection;
 
 class TransactionInMemoryRepository implements TransactionRepository
 {
@@ -37,5 +37,14 @@ class TransactionInMemoryRepository implements TransactionRepository
     public function byId(TransactionId $transactionId): ?Transaction
     {
         return $this->items->first(fn (Transaction $transaction) => $transaction->id()->equals($transactionId));
+    }
+
+    public function byInvoicesId(Collection $invoicesId): Collection
+    {
+        return $this->items->filter(function (Transaction $transaction) use ($invoicesId) {
+            $invoicesId->first(function (InvoiceId $invoiceId) use ($transaction) {
+                return $invoiceId->equals($transaction->invoiceId());
+            });
+        });
     }
 }
