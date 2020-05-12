@@ -1,10 +1,10 @@
 <?php
 
-namespace PineappleCard\Domain\Customer;
+namespace PineappleCard\Domain\Invoice;
 
 use Ramsey\Uuid\Uuid;
 
-class CustomerId
+class InvoiceId
 {
     private string $id;
 
@@ -18,9 +18,9 @@ class CustomerId
         return $this->id;
     }
 
-    public function equals(CustomerId $customerId): bool
+    public function equals(InvoiceId $invoiceId): bool
     {
-        return $this->id === $customerId->id();
+        return $this->id === $invoiceId->id();
     }
 
     public function __toString()
