@@ -10,12 +10,12 @@ use PineappleCard\Domain\Shared\ValueObject\Money;
 
 trait CreateCustomerHelper
 {
-    public function createCustomer(): Customer
+    public function createCustomer($limit = 1): Customer
     {
         return new Customer(
             new CustomerId(),
             new PayDay(10),
-            new Money(1),
+            new Money($limit),
             new Auth('david@davi.com', '123456')
         );
     }

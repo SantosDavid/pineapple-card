@@ -58,4 +58,14 @@ class Transaction
     {
         return $this->refunded;
     }
+
+    public function value(): Money
+    {
+        return $this->value;
+    }
+
+    public function invoiceId(): InvoiceId
+    {
+        return $this->invoiceId;
+    }
 }

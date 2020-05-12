@@ -12,16 +12,22 @@ use PineappleCard\Domain\Transaction\ValueObject\Establishment;
 
 trait CreateTransactionHelper
 {
-    public function createTransaction(): Transaction
+    public function createTransaction($value = 1, $refunded = false): Transaction
     {
         $establishment = new Establishment(1, new Geolocation(1, 1));
 
-        return new Transaction(
+        $transaction = new Transaction(
             $transactionId = new TransactionId(),
             new InvoiceId(),
             $cardId = new CardId(),
             $establishment,
-            new Money(1)
+            new Money($value)
         );
+
+        if ($refunded) {
+            $transaction->markAsRefunded();
+        }
+
+        return $transaction;
     }
 }

@@ -42,4 +42,9 @@ class Customer
     {
         return $this->payDay;
     }
+
+    public function limit(): Money
+    {
+        return $this->limit;
+    }
 }
