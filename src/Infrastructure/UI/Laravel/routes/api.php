@@ -10,6 +10,8 @@ $api->group(['namespace' => 'App\Http\Controllers\Api\V1', 'version' => 'v1'], f
     $api->group(['middleware' => 'api.auth'], function ($api) {
         $api->post('me/cards', 'CardController@store');
 
+        $api->get('me/points', 'CustomerController@points');
+
         $api->post('me/transactions', 'TransactionController@store');
         $api->post('me/transactions/{transactionId}/refunded', 'TransactionController@refunded');
 
