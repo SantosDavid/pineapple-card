@@ -18,8 +18,6 @@ class Invoice
 
     private PayDay $payDay;
 
-    private int $dueDate;
-
     private DateTime $createdAt;
 
     private bool $paid;
@@ -45,19 +43,13 @@ class Invoice
 
     public function isOpened(): bool
     {
-        $this->dueDate = $this->payDay->day() - self::DAYS_CLOSED_BEFORE_DUE_DATE;
-
-        $validAt = Carbon::instance($this->createdAt);
         $now = Carbon::now();
 
-        if ($this->isBeforeInvoiceBeCreated($now, $validAt)) {
+        if ($this->isBeforeInvoiceBeCreated($now, $this->createdAt)) {
             return false;
         }
 
-        $this->addMonthToValidAt($validAt);
-        $this->changeDayOfValidAt($validAt);
-
-        return $validAt >= $now;
+        return $this->closedAt() >= $now;
     }
 
     private function isBeforeInvoiceBeCreated(DateTime $now, DateTime $validAt): bool
@@ -65,18 +57,25 @@ class Invoice
         return $now < $validAt;
     }
 
-    private function addMonthToValidAt(Carbon $validAt): void
+    private function closedAt(): Carbon
     {
-        if ($this->dueDate <= $validAt->format('d')) {
-            $validAt->addMonth();
+        $closedAt = Carbon::instance($this->createdAt);
+        $closeDay = $this->payDay->day() - self::DAYS_CLOSED_BEFORE_DUE_DATE;
+
+        if ($closeDay <= $closedAt->format('d')) {
+            $closedAt->addMonth();
         }
+
+        $validDay = $closeDay - 1;
+
+        $closedAt->setDay($validDay);
+
+        return $closedAt;
     }
 
-    private function changeDayOfValidAt(Carbon $validAt): void
+    public function dueDate()
     {
-        $validDay = $this->dueDate - 1;
-
-        $validAt->setDay($validDay);
+        return $this->closedAt()->addDay(self::DAYS_CLOSED_BEFORE_DUE_DATE + 1);
     }
 
     public function customerId(): CustomerId
@@ -93,8 +92,26 @@ class Invoice
         $this->paid = true;
     }
 
+    public function status(): string
+    {
+        if ($this->isOpened()) {
+            return 'opened';
+        }
+
+        if ($this->isPaid()) {
+            return 'paid';
+        }
+
+        return 'pending';
+    }
+
     public function isPaid(): bool
     {
         return $this->paid;
+    }
+
+    public function createdAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }

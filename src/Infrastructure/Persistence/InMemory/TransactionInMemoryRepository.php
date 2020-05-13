@@ -42,7 +42,7 @@ class TransactionInMemoryRepository implements TransactionRepository
     public function byInvoicesId(Collection $invoicesId): Collection
     {
         return $this->items->filter(function (Transaction $transaction) use ($invoicesId) {
-            $invoicesId->first(function (InvoiceId $invoiceId) use ($transaction) {
+            return $invoicesId->first(function (InvoiceId $invoiceId) use ($transaction) {
                 return $invoiceId->equals($transaction->invoiceId());
             });
         });

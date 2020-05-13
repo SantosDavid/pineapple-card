@@ -16,15 +16,6 @@ class Money
         $this->currency = $currency;
     }
 
-    public function add(Money $money)
-    {
-        if ($money->currency !== $this->currency) {
-            throw new InvalidArgumentException();
-        }
-
-        return new Money($this->amount + $money->amount);
-    }
-
     public function amount(): float
     {
         return $this->amount;
@@ -33,6 +24,15 @@ class Money
     public function currency(): string
     {
         return $this->currency;
+    }
+
+    public function add(Money $money)
+    {
+        if ($money->currency !== $this->currency) {
+            throw new InvalidArgumentException();
+        }
+
+        return new Money($this->amount + $money->amount);
     }
 
     public function sub(Money $money)

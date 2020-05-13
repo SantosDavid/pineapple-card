@@ -59,6 +59,15 @@ class Transaction
         return $this->refunded;
     }
 
+    public function status(): string
+    {
+        if ($this->isRefunded()) {
+            return 'refunded';
+        }
+
+        return 'charged';
+    }
+
     public function value(): Money
     {
         return $this->value;
@@ -67,5 +76,15 @@ class Transaction
     public function invoiceId(): InvoiceId
     {
         return $this->invoiceId;
+    }
+
+    public function createdAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function establishment(): Establishment
+    {
+        return $this->establishment;
     }
 }
