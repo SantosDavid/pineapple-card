@@ -83,7 +83,6 @@ class OverviewInvoiceService
         $transactions = $this->transactionRepository->byInvoicesId(new Collection([$invoice->id()]));
 
         $responseTransactions = $transactions->map(function (Transaction $transaction) {
-
             return [
                 'name' => $transaction->establishment()->name(),
                 'status' => $transaction->status(),

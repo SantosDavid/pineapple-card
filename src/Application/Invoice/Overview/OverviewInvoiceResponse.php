@@ -16,8 +16,7 @@ class OverviewInvoiceResponse
         string $status,
         DateTime $dueDate,
         array $transactions
-    ): OverviewInvoiceResponse
-    {
+    ): OverviewInvoiceResponse {
         $this->invoices[] = [
             'id' => $invoiceId,
             'value' => $value,
