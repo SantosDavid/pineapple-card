@@ -12,13 +12,13 @@ use PineappleCard\Domain\Transaction\ValueObject\Establishment;
 
 trait CreateTransactionHelper
 {
-    public function createTransaction($value = 1, $refunded = false): Transaction
+    public function createTransaction($value = 1, $refunded = false, ?InvoiceId $invoiceId = null): Transaction
     {
         $establishment = new Establishment('Place',1, new Geolocation(1, 1));
 
         $transaction = new Transaction(
             $transactionId = new TransactionId(),
-            new InvoiceId(),
+            $invoiceId ?? new InvoiceId(),
             $cardId = new CardId(),
             $establishment,
             new Money($value)
