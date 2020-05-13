@@ -23,8 +23,7 @@ class OverviewInvoiceService
         InvoiceRepository $repository,
         TransactionRepository $transactionRepository,
         AvailableLimitService $availableLimitService
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->transactionRepository = $transactionRepository;
         $this->availableLimitService = $availableLimitService;
@@ -57,8 +56,8 @@ class OverviewInvoiceService
     private function previousInvoice(Collection $invoices, OverviewInvoiceResponse $response): void
     {
         $invoice = $invoices
-            ->sortBy(fn(Invoice $invoice) => $invoice->createdAt())
-            ->first(fn(Invoice $invoice) => !$invoice->isOpened());
+            ->sortBy(fn (Invoice $invoice) => $invoice->createdAt())
+            ->first(fn (Invoice $invoice) => !$invoice->isOpened());
 
         if (is_null($invoice)) {
             return;
@@ -69,7 +68,7 @@ class OverviewInvoiceService
 
     private function currentInvoice(Collection $invoices, OverviewInvoiceResponse $response): void
     {
-        $invoice = $invoices->first(fn(Invoice $invoice) => $invoice->isOpened());
+        $invoice = $invoices->first(fn (Invoice $invoice) => $invoice->isOpened());
 
         if (is_null($invoice)) {
             return;
