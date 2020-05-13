@@ -27,11 +27,11 @@ class Establishment
 
     public function __construct(string $name, int $category, Geolocation $geolocation)
     {
+        $this->name = $name;
         $this->category = $category;
         $this->geolocation = $geolocation;
 
         $this->setScoreRate($category);
-        $this->name = $name;
     }
 
     private function setScoreRate(int $category)
@@ -50,6 +50,6 @@ class Establishment
 
     public function name(): string
     {
-        return 'alterar';
+        return $this->name;
     }
 }

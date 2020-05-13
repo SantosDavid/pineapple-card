@@ -10,10 +10,17 @@ class OverviewInvoiceResponse
 
     private float $availableLimit;
 
-    public function addInvoice(string $invoiceId, string $status, DateTime $dueDate, array $transactions): OverviewInvoiceResponse
+    public function addInvoice(
+        string $invoiceId,
+        float $value,
+        string $status,
+        DateTime $dueDate,
+        array $transactions
+    ): OverviewInvoiceResponse
     {
         $this->invoices[] = [
             'id' => $invoiceId,
+            'value' => $value,
             'status' => $status,
             'dueDate' => $dueDate->format('d/m'),
             'transactions' => $transactions,

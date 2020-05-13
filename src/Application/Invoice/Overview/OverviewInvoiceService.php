@@ -7,6 +7,7 @@ use PineappleCard\Application\Customer\AvailableLimit\AvailableLimitService;
 use PineappleCard\Domain\Customer\CustomerId;
 use PineappleCard\Domain\Invoice\Invoice;
 use PineappleCard\Domain\Invoice\InvoiceRepository;
+use PineappleCard\Domain\Shared\ValueObject\Money;
 use PineappleCard\Domain\Transaction\Transaction;
 use PineappleCard\Domain\Transaction\TransactionRepository;
 use Tightenco\Collect\Support\Collection;
@@ -82,6 +83,7 @@ class OverviewInvoiceService
         $transactions = $this->transactionRepository->byInvoicesId(new Collection([$invoice->id()]));
 
         $responseTransactions = $transactions->map(function (Transaction $transaction) {
+
             return [
                 'name' => $transaction->establishment()->name(),
                 'status' => $transaction->status(),
@@ -90,6 +92,25 @@ class OverviewInvoiceService
             ];
         });
 
-        $response->addInvoice($invoice->id(), $invoice->status(), $invoice->dueDate(), $responseTransactions->toArray());
+        $response->addInvoice(
+            $invoice->id(),
+            $this->sumTransactionsValue($transactions),
+            $invoice->status(),
+            $invoice->dueDate(),
+            $responseTransactions->toArray()
+        );
+    }
+
+    private function sumTransactionsValue(Collection $transactions): float
+    {
+        return $transactions
+            ->reduce(function (Money $money, Transaction $transaction) {
+                if (!$transaction->isRefunded()) {
+                    return $money->add($transaction->value());
+                }
+
+                return $money;
+            }, new Money(0))
+            ->amount();
     }
 }
