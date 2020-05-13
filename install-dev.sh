@@ -7,4 +7,5 @@ docker exec -it pineapple_app mkdir src/Infrastructure/UI/Laravel/bootstrap/cach
 docker exec -it pineapple_app php artisan key:generate
 docker exec -it pineapple_server chown www-data src/Infrastructure/UI/Laravel/storage/ -R
 docker exec -it pineapple_server chown www-data src/Infrastructure/UI/Laravel/bootstrap/ -R
+./migration.sh "migrations:migrate"
 docker exec -it pineapple_app php artisan jwt:secret
