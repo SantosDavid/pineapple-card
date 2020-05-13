@@ -14,5 +14,7 @@ $api->group(['namespace' => 'App\Http\Controllers\Api\V1', 'version' => 'v1'], f
         $api->post('me/transactions/{transactionId}/refunded', 'TransactionController@refunded');
 
         $api->post('me/invoices/{invoiceId}/pay', 'InvoiceController@pay');
+
+        $api->get('me/invoices/overview', 'InvoiceController@overview');
     });
 });

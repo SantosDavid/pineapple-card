@@ -4,6 +4,7 @@ namespace PineappleCard\Infrastructure\Persistence\Doctrine\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use PineappleCard\Domain\Customer\CustomerId;
+use PineappleCard\Domain\Invoice\InvoiceId;
 use PineappleCard\Domain\Transaction\Transaction;
 use PineappleCard\Domain\Transaction\TransactionId;
 use PineappleCard\Domain\Transaction\TransactionRepository;

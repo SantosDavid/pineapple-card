@@ -93,8 +93,41 @@ class Invoice
         $this->paid = true;
     }
 
+    public function status(): string
+    {
+        if ($this->isOpened()) {
+            return 'opened';
+        }
+
+        if ($this->isPaid()) {
+            return 'paid';
+        }
+
+        return 'pending';
+    }
+
+    public function dueDate(): DateTime
+    {
+        $validAt = Carbon::instance($this->createdAt);
+
+        if ($this->dueDate <= $validAt->format('d')) {
+            $validAt->addMonth();
+        }
+
+        $validDay = $this->dueDate - 1;
+
+        $validAt->setDay($validDay);
+
+        return $validAt;
+    }
+
     public function isPaid(): bool
     {
         return $this->paid;
+    }
+
+    public function createdAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }

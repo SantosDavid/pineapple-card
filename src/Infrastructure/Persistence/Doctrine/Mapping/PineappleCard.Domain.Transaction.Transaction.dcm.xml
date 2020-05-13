@@ -5,6 +5,9 @@
         <id name="transactionId" column="id" type="transaction_id">
         </id>
 
+        <field name="invoiceId" column="invoice_id" type="invoice_id">
+        </field>
+
         <field name="cardId" column="card_id" type="card_id" nullable="false">
         </field>
 

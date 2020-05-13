@@ -44,4 +44,9 @@ class Establishment
     {
         return $this->scoreRate;
     }
+
+    public function name(): string
+    {
+        return 'alterar';
+    }
 }
