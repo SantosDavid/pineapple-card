@@ -7,6 +7,8 @@ use PineappleCard\Domain\Transaction\Exception\InvalidEstablishmentCategoryExcep
 
 class Establishment
 {
+    private string $name;
+
     private int $category;
 
     private Geolocation $geolocation;
@@ -23,12 +25,13 @@ class Establishment
         7 => 2.7,
     ];
 
-    public function __construct(int $category, Geolocation $geolocation)
+    public function __construct(string $name, int $category, Geolocation $geolocation)
     {
         $this->category = $category;
         $this->geolocation = $geolocation;
 
         $this->setScoreRate($category);
+        $this->name = $name;
     }
 
     private function setScoreRate(int $category)

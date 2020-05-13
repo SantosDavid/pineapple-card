@@ -4,6 +4,8 @@ namespace PineappleCard\Application\Transaction\Create;
 
 class CreateTransactionRequest
 {
+    private string $name;
+
     private string $cardId;
 
     private int $category;
@@ -66,6 +68,17 @@ class CreateTransactionRequest
     public function setValue(float $value): CreateTransactionRequest
     {
         $this->value = $value;
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): CreateTransactionRequest
+    {
+        $this->name = $name;
         return $this;
     }
 }

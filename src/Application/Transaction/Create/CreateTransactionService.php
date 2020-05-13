@@ -76,7 +76,7 @@ class CreateTransactionService
 
     private function createEstablishment(CreateTransactionRequest $request): Establishment
     {
-        return new Establishment($request->getCategory(), $this->createGeolocation($request));
+        return new Establishment($request->getName(), $request->getCategory(), $this->createGeolocation($request));
     }
 
     private function createGeolocation(CreateTransactionRequest $request): Geolocation
