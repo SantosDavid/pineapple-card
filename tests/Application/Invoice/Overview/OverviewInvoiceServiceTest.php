@@ -133,10 +133,9 @@ class OverviewInvoiceServiceTest extends TestCase
 
         $response = $this->service->execute($request);
 
+
         $this->assertEquals(1, count($response->getInvoices()[0]['transactions']));
-
         $transactionResponse = $response->getInvoices()[0]['transactions'][0];
-
         $this->assertEquals($transaction->status(), $transactionResponse['status']);
         $this->assertEquals($transaction->value()->amount(), $transactionResponse['amount']);
         $this->assertEquals($transaction->createdAt()->format('c'), $transactionResponse['date']);
