@@ -57,7 +57,7 @@ class Invoice
         return $now < $validAt;
     }
 
-    public function closedAt(): Carbon
+    private function closedAt(): Carbon
     {
         $closedAt = Carbon::instance($this->createdAt);
         $closeDay = $this->payDay->day() - self::DAYS_CLOSED_BEFORE_DUE_DATE;
