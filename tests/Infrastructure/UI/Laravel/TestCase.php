@@ -32,7 +32,7 @@ abstract class TestCase extends BaseTestCase
         $customer = $customerRepository->create((new Customer(
             new CustomerId(1),
             new PayDay(10),
-            new Money(1),
+            new Money(1000),
             new Auth('daviddsantosd@gmail.com', '123456')
         )));
 

@@ -16,6 +16,8 @@ class CreateTransactionRequest
 
     private float $value;
 
+    private string $customerId;
+
     public function getCardId(): string
     {
         return $this->cardId;
@@ -79,6 +81,18 @@ class CreateTransactionRequest
     public function setName(string $name): CreateTransactionRequest
     {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getCustomerId(): string
+    {
+        return $this->customerId;
+    }
+
+    public function setCustomerId(string $customerId): CreateTransactionRequest
+    {
+        $this->customerId = $customerId;
+
         return $this;
     }
 }

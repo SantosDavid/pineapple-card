@@ -26,6 +26,7 @@ class TransactionController extends Controller
     {
         try {
             $applicationRequest = (new CreateTransactionRequest())
+                ->setCustomerId(auth()->user()->id())
                 ->setName($request->get('name'))
                 ->setCardId($request->get('card_id'))
                 ->setCategory($request->get('category'))
