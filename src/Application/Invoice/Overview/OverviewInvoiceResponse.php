@@ -6,13 +6,14 @@ use DateTime;
 
 class OverviewInvoiceResponse
 {
-    private array $invoice;
+    private array $invoices = [];
 
     private float $availableLimit;
 
-    public function addInvoice(string $status, DateTime $dueDate, array $transactions): OverviewInvoiceResponse
+    public function addInvoice(string $invoiceId, string $status, DateTime $dueDate, array $transactions): OverviewInvoiceResponse
     {
-        $this->invoice[] = [
+        $this->invoices[] = [
+            'id' => $invoiceId,
             'status' => $status,
             'dueDate' => $dueDate->format('d/m'),
             'transactions' => $transactions,
@@ -28,11 +29,21 @@ class OverviewInvoiceResponse
         return $this;
     }
 
+    public function getAvailableLimit(): float
+    {
+        return $this->availableLimit;
+    }
+
+    public function getInvoices(): array
+    {
+        return $this->invoices;
+    }
+
     public function __toString()
     {
         return json_encode([
             'available_limit' => $this->availableLimit,
-            'invoices' => $this->invoice,
+            'invoices' => $this->invoices,
         ]);
     }
 }

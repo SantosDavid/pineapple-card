@@ -56,7 +56,7 @@ class OverviewInvoiceService
     private function previousInvoice(Collection $invoices, OverviewInvoiceResponse $response): void
     {
         $invoice = $invoices
-            ->sortBy(fn (Invoice $invoice) => $invoice->createdAt())
+            ->sortByDesc(fn (Invoice $invoice) => $invoice->createdAt())
             ->first(fn (Invoice $invoice) => !$invoice->isOpened());
 
         if (is_null($invoice)) {
@@ -86,10 +86,10 @@ class OverviewInvoiceService
                 'name' => $transaction->establishment()->name(),
                 'status' => $transaction->status(),
                 'amount' => $transaction->value()->amount(),
-                'date' => $transaction->createdAt()
+                'date' => $transaction->createdAt()->format('c'),
             ];
         });
 
-        $response->addInvoice($invoice->status(), $invoice->dueDate(), $responseTransactions->toArray());
+        $response->addInvoice($invoice->id(), $invoice->status(), $invoice->dueDate(), $responseTransactions->toArray());
     }
 }
