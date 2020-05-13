@@ -14,12 +14,12 @@ class EstablishmentTest extends TestCase
         $this->expectException(InvalidEstablishmentCategoryException::class);
 
 
-        new Establishment(10, new Geolocation(1, 2));
+        new Establishment('Establishment',10, new Geolocation(1, 2));
     }
 
     public function testShouldSetRightScore()
     {
-        $establishment = new Establishment(1, new Geolocation(1, 1));
+        $establishment = new Establishment('Establishment',1, new Geolocation(1, 1));
 
         $this->assertEquals(0.8, $establishment->scoreRate());
     }

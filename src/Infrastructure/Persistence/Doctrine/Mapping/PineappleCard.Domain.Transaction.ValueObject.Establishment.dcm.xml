@@ -1,6 +1,10 @@
 <doctrine-mapping>
     <embeddable name="PineappleCard\Domain\Transaction\ValueObject\Establishment">
+        <field name="name" type="string"/>
+
         <field name="category" type="integer" nullable="false"/>
+
+        <field name="scoreRate" column="score_rate" type="float" nullable="false"/>
 
         <embedded name="geolocation" class="PineappleCard\Domain\Shared\ValueObject\Geolocation"/>
     </embeddable>

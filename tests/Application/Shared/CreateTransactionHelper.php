@@ -14,7 +14,7 @@ trait CreateTransactionHelper
 {
     public function createTransaction($value = 1, $refunded = false): Transaction
     {
-        $establishment = new Establishment(1, new Geolocation(1, 1));
+        $establishment = new Establishment('Place',1, new Geolocation(1, 1));
 
         $transaction = new Transaction(
             $transactionId = new TransactionId(),

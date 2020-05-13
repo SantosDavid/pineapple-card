@@ -41,6 +41,7 @@ class TransactionControllerTest extends TestCase
             'longitude' => '-74.0059731',
             'category' => 1,
             'card_id' => $this->cardId->id(),
+            'name' => 'New York City',
         ];
 
 
