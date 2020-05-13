@@ -53,7 +53,6 @@ class CreateTransactionServiceTest extends TestCase
         $this->service->execute($request);
     }
 
-
     public function testShouldRaiseExceptionWhenCustomerHasInsufficientLimit()
     {
         $this->expectException(InsufficientLimitException::class);

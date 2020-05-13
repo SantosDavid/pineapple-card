@@ -48,7 +48,7 @@ class CreateTransactionService
         $customerId = new CustomerId($request->getCustomerId());
 
         $card = $this->findCard($cardId, $customerId);
-        $this->checkLimit($customerId,  $request);
+        $this->checkLimit($customerId, $request);
 
         $transaction = $this->createTransaction($request, $card);
 
