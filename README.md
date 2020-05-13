@@ -5,10 +5,10 @@
     invoices, limit and more.
     
 #### Installation
-    - git clone https://github.com/SantosDavid/pineapple-card.git
-    - cd pineapple-card
-    - ./install-dev.sh
-    - ./tests.sh
+    git clone https://github.com/SantosDavid/pineapple-card.git
+    cd pineapple-card
+    ./install-dev.sh
+    ./tests.sh
     
 #### Concepts
    [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
