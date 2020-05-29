@@ -4,11 +4,18 @@ namespace App\Providers;
 
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
 use Illuminate\Support\ServiceProvider;
-use Doctrine\ORM\EntityManager;
-use PineappleCard\Domain\Invoice\InvoiceId;
+use PineappleCard\Domain\Card\CardRepository;
+use PineappleCard\Domain\Customer\CustomerRepository;
+use PineappleCard\Domain\Invoice\InvoiceRepository;
+use PineappleCard\Domain\Transaction\TransactionRepository;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCardRepository;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineCustomerRepository;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineInvoiceRepository;
+use PineappleCard\Infrastructure\Persistence\Doctrine\Repository\DoctrineTransactionRepository;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CardTypeId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\CustomerTypeId;
 use PineappleCard\Infrastructure\Persistence\Doctrine\Types\InvoiceTypeId;
@@ -24,6 +31,14 @@ class DoctrineServiceProvider extends ServiceProvider
         );
 
         $this->types();
+
+        $this->app->bind(CustomerRepository::class, DoctrineCustomerRepository::class);
+
+        $this->app->bind(CardRepository::class, DoctrineCardRepository::class);
+
+        $this->app->bind(InvoiceRepository::class, DoctrineInvoiceRepository::class);
+
+        $this->app->bind(TransactionRepository::class, DoctrineTransactionRepository::class);
     }
 
     private function connection()

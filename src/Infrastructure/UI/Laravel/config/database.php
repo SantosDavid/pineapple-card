@@ -45,6 +45,14 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
         ],
+
+        'mongo' => [
+            'url' => 'mongodb://mongodb:27017',
+            'options' => [
+                'username' => env('DB_USERNAME'),
+                'password' => env('DB_PASSWORD'),
+            ]
+        ]
     ],
 
     /*
