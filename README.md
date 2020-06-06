@@ -1,5 +1,7 @@
 # PineappleCARD
 
+[![Build Status](https://travis-ci.org/SantosDavid/pineapple-card.svg?branch=master)](https://travis-ci.org/SantosDavid/pineapple-card)
+
 ### #Description
     This project is a backend that provide an api to consume data about 
     invoices, limit and more.
