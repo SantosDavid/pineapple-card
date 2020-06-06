@@ -1,6 +1,6 @@
 # PineappleCARD
 
-[![Build Status](https://travis-ci.org/SantosDavid/pineapple-card.svg?branch=master)](https://travis-ci.org/SantosDavid/pineapple-card)  ![Code Climate](https://codeclimate.com/github/SantosDavid/pineapple-card/badges/gpa.svg)](https://codeclimate.com/github/SantosDavid/pineapple-card) 
+[![Build Status](https://travis-ci.org/SantosDavid/pineapple-card.svg?branch=master)](https://travis-ci.org/SantosDavid/pineapple-card)  [![Code Climate](https://codeclimate.com/github/SantosDavid/pineapple-card/badges/gpa.svg)](https://codeclimate.com/github/SantosDavid/pineapple-card) 
 
 ### #Description
     This project is a backend that provide an api to consume data about 
