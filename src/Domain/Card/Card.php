@@ -15,13 +15,13 @@ class Card
 
     private DateTime $createdAt;
 
-    public function __construct(CardId $cardId, CustomerId $customerId)
+    public function __construct(CardId $cardId, CustomerId $customerId, int $number = null, DateTime $createdAt = null)
     {
         $this->cardId = $cardId;
         $this->customerId = $customerId;
 
-        $this->number = rand(0000000000000001, 9999999999999999);
-        $this->createdAt = new DateTime();
+        $this->number = $number ?? rand(0000000000000001, 9999999999999999);
+        $this->createdAt = $createdAt ?? new DateTime();
     }
 
     public function id(): CardId
@@ -32,5 +32,15 @@ class Card
     public function customerId(): CustomerId
     {
         return $this->customerId;
+    }
+
+    public function number(): int
+    {
+        return $this->number;
+    }
+
+    public function createdAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }

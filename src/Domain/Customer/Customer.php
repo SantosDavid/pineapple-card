@@ -19,12 +19,12 @@ class Customer
 
     private Auth $auth;
 
-    public function __construct(CustomerId $id, PayDay $payDay, Money $limit, Auth $auth)
+    public function __construct(CustomerId $id, PayDay $payDay, Money $limit, Auth $auth, DateTime $createdAt = null)
     {
         $this->id = $id;
         $this->payDay = $payDay;
         $this->limit = $limit;
-        $this->createdAt = new DateTime();
+        $this->createdAt = $createdAt ?? new DateTime();
         $this->auth = $auth;
     }
 
@@ -46,5 +46,10 @@ class Customer
     public function limit(): Money
     {
         return $this->limit;
+    }
+
+    public function createdAt(): DateTime
+    {
+        return $this->createdAt;
     }
 }

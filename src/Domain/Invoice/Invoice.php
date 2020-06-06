@@ -114,4 +114,9 @@ class Invoice
     {
         return $this->createdAt;
     }
+
+    public function payDay(): PayDay
+    {
+        return $this->payDay;
+    }
 }

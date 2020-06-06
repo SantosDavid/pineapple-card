@@ -52,4 +52,14 @@ class Establishment
     {
         return $this->name;
     }
+
+    public function category(): int
+    {
+        return $this->category;
+    }
+
+    public function geoLocation(): Geolocation
+    {
+        return $this->geolocation;
+    }
 }

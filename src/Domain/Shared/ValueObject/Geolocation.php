@@ -12,4 +12,14 @@ class Geolocation
         $this->latitude = $latitude;
         $this->longitude = $longitude;
     }
+
+    public function latitude(): string
+    {
+        return $this->latitude;
+    }
+
+    public function longitude(): string
+    {
+        return $this->longitude;
+    }
 }

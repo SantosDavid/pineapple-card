@@ -29,14 +29,15 @@ class Transaction
         InvoiceId $invoiceId,
         CardId $cardId,
         Establishment $establishment,
-        Money $value
+        Money $value,
+        $createdAt = null
     ) {
         $this->transactionId = $transactionId;
         $this->invoiceId = $invoiceId;
         $this->cardId = $cardId;
         $this->establishment = $establishment;
         $this->value = $value;
-        $this->createdAt = new DateTime();
+        $this->createdAt = $createdAt ?? new DateTime();
     }
 
     public function id(): TransactionId
