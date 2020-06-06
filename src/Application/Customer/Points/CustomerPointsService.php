@@ -24,7 +24,7 @@ class CustomerPointsService
     public function execute(CustomerPointsRequest $request)
     {
         $invoices = $this->invoiceRepository->byCustomer(new CustomerId($request->getCustomerId()));
-        $invoicesId = $invoices->map(fn(Invoice $invoice) => $invoice->id());
+        $invoicesId = $invoices->map(fn (Invoice $invoice) => $invoice->id());
 
         $transactions = $this->transactionRepository->byInvoicesId($invoicesId);
 

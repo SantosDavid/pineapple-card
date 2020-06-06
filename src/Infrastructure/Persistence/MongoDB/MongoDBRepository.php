@@ -16,5 +16,5 @@ abstract class MongoDBRepository
             ->selectCollection($this->collectionName());
     }
 
-    protected abstract function collectionName(): string;
+    abstract protected function collectionName(): string;
 }

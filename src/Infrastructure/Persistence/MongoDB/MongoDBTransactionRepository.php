@@ -38,14 +38,14 @@ class MongoDBTransactionRepository extends MongoDBRepository implements Transact
     public function byInvoicesId(Collection $invoicesId): Collection
     {
         $ids = $invoicesId
-            ->map(fn(InvoiceId $invoiceId) => $invoiceId->id())
+            ->map(fn (InvoiceId $invoiceId) => $invoiceId->id())
             ->flatten()
             ->toArray();
 
         $collection = $this->collection->find(['invoice_id' => ['$in' => $ids]])->toArray();
 
         return (new Collection($collection))
-            ->map(fn(object $data) => $this->fromJson($data));
+            ->map(fn (object $data) => $this->fromJson($data));
     }
 
     protected function collectionName(): string
