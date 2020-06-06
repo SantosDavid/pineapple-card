@@ -9,4 +9,4 @@ before_install:
 script:
    - ./tests.sh
    - docker-compose run app vendor/bin/phpunit
-   - docker exec -it pineapple_app php-cs-fixer fix src --dry-run
+   - docker exec -it pineapple_app php-cs-fixer fix --dry-run
