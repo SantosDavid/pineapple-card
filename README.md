@@ -5,7 +5,7 @@
 ### Description
 This project is a backend that provide an api to consume data about invoices, limit and more.
     
-### #Installation
+### Installation
 1. `git clone https://github.com/SantosDavid/pineapple-card.git`
 2. `cd pineapple-card`
 3. `./install-dev.sh`
