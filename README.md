@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/SantosDavid/pineapple-card.svg?branch=master)](https://travis-ci.org/SantosDavid/pineapple-card)  [![Code Climate](https://codeclimate.com/github/SantosDavid/pineapple-card/badges/gpa.svg)](https://codeclimate.com/github/SantosDavid/pineapple-card) 
 
-### #Description
+### Description
 This project is a backend that provide an api to consume data about invoices, limit and more.
     
 ### #Installation
@@ -11,13 +11,13 @@ This project is a backend that provide an api to consume data about invoices, li
 3. `./install-dev.sh`
 4. `./tests.sh`
     
-### #Concepts
+### Concepts
    [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
      
    [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
    
 
-### #Persistence
+### Persistence
 This project has support for 2 different persistence mechanism: Doctrine and MogoDb.
     
 Switch the persistence mechanism commenting/uncomenting the following lines in `src/Infrastructure/UI/Laravel/config/app.php`:
@@ -26,12 +26,12 @@ Switch the persistence mechanism commenting/uncomenting the following lines in `
 
    
 
-### #Documentation
+### Documentation
 ![Screenshot from 2020-05-13 01-39-24](https://user-images.githubusercontent.com/26348312/81771979-f0066400-94ba-11ea-8f93-58943c8240cf.png)
 
 [Download endpoints to insominia](https://github.com/SantosDavid/pineapple-card/blob/master/Insomnia.json).
 
 
-### #Author
+### Author
     - David Santos daviddsantosd@gmail.com
  
